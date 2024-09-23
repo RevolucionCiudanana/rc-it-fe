@@ -1,0 +1,14 @@
+<div class="generic-tooltip-container">
+    <i class="fa-solid fa-circle-info" (click)="openModal()"></i>
+</div>
+<div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+        <div class="close-wrapper">
+            <div>
+                <span>Info</span><i class="fa-solid fa-circle-info"></i>
+            </div>
+            <span class="close" (click)="closeModal()">&times;</span>
+        </div>
+        <p>{{ text }}</p>
+    </div>
+</div>

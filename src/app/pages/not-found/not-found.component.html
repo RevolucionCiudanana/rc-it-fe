@@ -1,0 +1,11 @@
+<div class="not-found">
+    <div class="message">
+        <img src="assets/svg/404.svg" alt="404 Error Icon">
+        <h1>404 - Page not found</h1>
+        <p>Sembra che la pagina non esista</p>
+        <div class="button-wrapper">
+            <app-generic-button [@fadeInAnimation] [text]="'Ritorna alla Home'" [size]="'medium'" [color]="'primary'"
+                [glassEffect]="false" (buttonClicked)="goToPageHome()"></app-generic-button>
+        </div>
+    </div>
+</div>

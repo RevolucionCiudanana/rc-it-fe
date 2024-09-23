@@ -1,0 +1,29 @@
+@import "../../../assets/scss/colors.scss";
+
+.homepage {
+  .hero-container {
+    img {
+      width: 100%;
+    }
+  }
+  .map-container {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 350px;
+    }
+  }
+  .main-title {
+    span {
+      font-family: "GothamUltra";
+      font-size: 3rem;
+      color: #ffff;
+      background-color: #df4747;
+      padding: 9px 22px 9px 9px;
+      border-radius: 20px;
+    }
+    .description {
+      padding: 0.2rem 1rem;
+    }
+  }
+}

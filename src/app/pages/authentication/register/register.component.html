@@ -1,0 +1,60 @@
+<div class="register container">
+    <div class="row">
+        <div class="col-12">
+            <form class="card-bg" [formGroup]="registerForm" (ngSubmit)="register()">
+                <legend>Registrazione</legend>
+                <div class="fieldset-container">
+                    <fieldset>
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" formControlName="name" placeholder="Inserisci il tuo nome">
+                    </fieldset>
+                    <fieldset>
+                        <label for="surname">Cognome:</label>
+                        <input type="text" id="surname" formControlName="surname"
+                            placeholder="Inserisci il tuo cognome">
+                    </fieldset>
+                    <fieldset>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" formControlName="email" placeholder="Inserisci la tua email">
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password:</label>
+                        <div class="password-container">
+                            <input [type]="passwordFieldType" id="password" formControlName="password"
+                                placeholder="Inserisci la tua password" (input)="checkPasswordStrength()">
+                            <button type="button" (click)="togglePasswordVisibility()">
+                                <i class="fas "
+                                    [ngClass]="{'fa-eye-slash': passwordFieldType === 'password', 'fa-eye': passwordFieldType === 'text'}"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div [ngClass]="passwordStrengthClass" class="password-strength-bar"></div>
+                            <div class="password-strength-message">{{ passwordStrengthMessage }}</div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <label for="confirmPassword">Conferma Password:</label>
+                        <div class="password-container">
+                            <input [type]="confirmPasswordFieldType" id="confirmPassword"
+                                formControlName="confirmPassword" placeholder="Conferma la tua password">
+                            <button type="button" (click)="toggleConfirmPasswordVisibility()">
+                                <i class="fas "
+                                    [ngClass]="{'fa-eye-slash': confirmPasswordFieldType === 'password', 'fa-eye': confirmPasswordFieldType === 'text'}"></i>
+                            </button>
+                        </div>
+                        <div *ngIf="registerForm.hasError('mismatch') && (registerForm.get('confirmPassword')?.touched || registerForm.get('confirmPassword')?.dirty)"
+                            class="error-message">
+                            Le password non coincidono
+                        </div>
+                    </fieldset>
+                    <div class="button-container">
+                        <button type="submit" [disabled]="!registerForm.valid">Registrati</button>
+                    </div>
+                    <div class="login-link">
+                        <a routerLink="/login">Torna al Login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

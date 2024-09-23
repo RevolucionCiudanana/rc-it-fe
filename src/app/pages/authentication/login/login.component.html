@@ -1,0 +1,26 @@
+<div class="login container">
+    <div class="row">
+        <div class="col-12">
+            <form class="card-bg" [formGroup]="loginForm" (ngSubmit)="login()">
+                <legend>Login</legend>
+                <div class="fieldset-container">
+                    <fieldset>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" formControlName="email" placeholder="Inserisci email">
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" formControlName="password"
+                            placeholder="Inserisci password">
+                    </fieldset>
+                    <div class="button-container">
+                        <button class="btn-primary" type="submit" [disabled]="!loginForm.valid">Accedi</button>
+                    </div>
+                    <div class="register-link">
+                        <a href="/register">Registrati</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

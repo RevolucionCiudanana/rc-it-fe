@@ -1,0 +1,68 @@
+
+@import '../../../assets/scss/colors.scss';
+.contacts {
+  padding: 1rem;
+  .heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .divider {
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .line {
+        flex: 1 1 0;
+        border-bottom: 1px solid ;
+      }
+      .triangle-wrapper {
+        padding: 5px;
+
+        .triangle {
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 10px solid $primary-color;
+        }
+      }
+    }
+  }
+  .contact-panel {
+    display: flex;
+    padding: 1rem;
+    .left-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .item {
+        display: flex;
+        padding: 1rem;
+
+        .values {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          padding: 1rem;
+          .label {
+            font-size: large;
+            text-transform: uppercase;
+            color: $primary-color;
+            font-weight: 800;
+          }
+        }
+        .icon {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem;
+          i {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}

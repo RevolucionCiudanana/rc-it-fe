@@ -1,0 +1,7 @@
+<div class="info-tooltip">
+    <input type="text" (focus)="showTooltip = true" (blur)="showTooltip = false" />
+    <span class="info-icon" [ngClass]="{'show-tooltip': showTooltip}" (click)="showTooltip = !showTooltip">
+        i
+        <span class="tooltip">{{ tooltipContent }}</span>
+    </span>
+</div>

@@ -1,0 +1,215 @@
+/* style.scss */
+@import "./colors.scss";
+form {
+  border-radius: 10px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
+  // height: 90%;
+  legend {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 1rem 0;
+    border-bottom: 1px solid #dbc6c614;
+  }
+
+  .fieldset-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      label {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+    .toggle-container {
+      display: flex;
+      justify-content: space-between;
+      @media screen and (max-width: 767px) {
+        flex-direction: column;
+        .switch {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      p {
+        width: 90%;
+        .optional {
+          color: rgb(0 0 0 / 74%);
+          font-size: 0.7rem;
+        }
+      }
+
+      .switch {
+        position: relative;
+        width: 60px;
+        height: 34px;
+      }
+
+      /* Hide default HTML checkbox */
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      /* The slider */
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+    }
+
+    textarea,
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="datetime-local"],
+    input[type="password"],
+    input[type="url"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+    .product-type {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 40px;
+          height: 40px;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    /* Stile per le checkbox */
+    .checkbox-group {
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      label {
+        position: relative;
+        padding-left: 25px;
+        cursor: pointer;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
+
+      label::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        background-color: #fff;
+      }
+
+      input[type="checkbox"]:checked + label::after {
+        content: "\2713";
+        font-size: 14px;
+        position: absolute;
+        top: 0px;
+        left: 4px;
+        color: $primary-color;
+      }
+
+      label::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      label:hover::before {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  .button-container {
+    margin-top: auto;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    
+  }
+
+  .errors-container {
+    height: 20px;
+    .errors {
+      color: #ff5c5c;
+      div {
+        border-radius: 5px;
+        width: fit-content;
+        padding: 0.2rem 0.5rem;
+        background-color: rgba(0, 0, 0, 0.197);
+      }
+    }
+  }
+}

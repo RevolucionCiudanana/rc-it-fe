@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; // Allow wrapping for smaller screens
+
+  .image-column {
+    flex: 1;
+    img {
+      max-width: 100%; // L'immagine si adatta alla colonna
+      height: auto;
+    }
+  }
+
+  .form-column {
+    flex: 1;
+    padding: 15px; // Aggiungi padding per il modulo
+    background-color: #f9f9f9; // Colore di sfondo della colonna del modulo
+    border-left: 2px solid #ccc; // Bordo a sinistra
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      div {
+        label {
+          display: block; // Rendi l'etichetta un blocco
+          margin-bottom: 5px; // Spaziatura sotto l'etichetta
+        }
+
+        input {
+          width: 100%; // Input occupa tutta la larghezza
+          padding: 5px; // Padding interno
+          border: 1px solid #ccc; // Bordo degli input
+          border-radius: 4px; // Angoli arrotondati
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); // Ombra leggera
+
+          &:focus {
+            border-color: #007bff; // Colore del bordo in focus
+            outline: none; // Rimuovi l'outline predefinito
+          }
+        }
+      }
+
+      button {
+        padding: 10px 15px; // Padding per il pulsante
+        background-color: #007bff; // Colore di sfondo del pulsante
+        color: white; // Colore del testo
+        border: none; // Rimuovi il bordo predefinito
+        border-radius: 4px; // Angoli arrotondati
+        cursor: pointer; // Cambia il cursore al passaggio del mouse
+
+        &:disabled {
+          background-color: #ccc; // Colore quando disabilitato
+          cursor: not-allowed; // Cursore per indicare disabilitato
+        }
+
+        &:hover:not(:disabled) {
+          background-color: #0056b3; // Colore al passaggio del mouse
+        }
+      }
+    }
+  }
+}
+
+// Media query per schermi più piccoli
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; // Passa a colonna per schermi piccoli
+
+    .form-column {
+      width: 100%;
+      flex: 100%; // Ogni colonna occupa tutta la larghezza
+      border-left: none; // Rimuovi il bordo a sinistra nella colonna del modulo
+    }
+    .image-column {
+      display: none;
+    }
+  }
+}

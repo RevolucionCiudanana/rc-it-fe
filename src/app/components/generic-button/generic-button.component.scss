@@ -1,0 +1,36 @@
+@import "../../../assets/scss/colors.scss";
+.generic-button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  &.btn-lg {
+    padding: 15px 30px;
+    font-size: 18px;
+  }
+
+  &.btn-primary {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+      background-color: #5053ef;
+    }
+  }
+
+  &.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+
+    &:hover {
+      background-color: #5a6268;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="image-column">
+        <img src="assets/images/become-member/italy.png" alt="Descrizione dell'immagine">
+    </div>
+    <div class="form-column">
+        <form [formGroup]="becomeMemberForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="firstName">Nome:</label>
+                <input id="firstName" formControlName="firstName" required>
+            </div>
+            <div>
+                <label for="lastName">Cognome:</label>
+                <input id="lastName" formControlName="lastName" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input id="email" type="email" formControlName="email" required>
+            </div>
+            <div>
+                <label for="phone">Telefono:</label>
+                <input id="phone" formControlName="phone" required>
+            </div>
+            <div>
+                <label for="dateOfBirth">Data di Nascita:</label>
+                <input id="dateOfBirth" type="date" formControlName="dateOfBirth" required>
+            </div>
+            <div>
+                <label for="address">Indirizzo:</label>
+                <input id="address" formControlName="address" required>
+            </div>
+            <div>
+                <label for="city">Città:</label>
+                <input id="city" formControlName="city" required>
+            </div>
+            <button type="submit" [disabled]="becomeMemberForm.invalid">Invia</button>
+        </form>
+    </div>
+</div>

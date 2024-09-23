@@ -1,0 +1,14 @@
+<div class="message-modal" [class.show]="modalData.open">
+    <div class="message-modal-content">
+        <div class="message-modal-head" [ngClass]="modalData.status">
+            <h1>{{ modalData.titleModal }}</h1>
+        </div>
+        <div class="message-modal-body">
+            <div [innerHTML]="modalData.text">{{ modalData.text }}</div>
+        </div>
+        <div class="message-modal-actions">
+            <button (click)="onCancelClick()">{{ modalData.cancelText }}</button>
+            <button (click)="onConfirmClick()">{{ modalData.confirmText }}</button>
+        </div>
+    </div>
+</div>

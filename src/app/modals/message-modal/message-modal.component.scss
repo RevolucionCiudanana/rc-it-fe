@@ -1,0 +1,63 @@
+.message-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  &.show {
+    display: block;
+  }
+
+  .message-modal-content {
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 80%;
+    overflow: hidden;
+
+    .message-modal-head {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      width: 100%;
+      background-color: rgb(150, 150, 150);
+      color: #fff;
+      &.info {
+        background-color: rgb(32, 120, 235);
+      }
+
+      &.warning {
+        background-color: rgb(213, 158, 55);
+      }
+
+      &.success {
+        background-color: rgb(60, 206, 60);
+      }
+
+      &.error {
+        background-color: rgb(206, 70, 60);
+      }
+    }
+    .message-modal-body {
+      padding: 1rem;
+    }
+  }
+
+  .message-modal-actions {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-around;
+
+    button {
+      width: 100px;
+      padding: 5px;
+      border-radius: 15px;
+    }
+  }
+}

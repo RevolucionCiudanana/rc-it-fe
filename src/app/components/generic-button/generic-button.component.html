@@ -1,0 +1,8 @@
+<button class="generic-button" [ngClass]="{
+  'btn-sm': size === 'small',
+  'btn-lg': size === 'large',
+  'btn-primary': color === 'primary',
+  'btn-secondary': color === 'secondary'
+  }" (click)="onClick()">
+    {{ text }}
+</button>

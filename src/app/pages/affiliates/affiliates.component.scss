@@ -1,0 +1,72 @@
+$table-bg-color: #ffffff;
+$table-header-bg-color: #f2f2f2;
+$table-border-color: #ddd;
+$button-bg-color: #007bff;
+$button-hover-bg-color: #0056b3;
+$button-text-color: #ffffff;
+$button-padding: 10px 15px;
+$button-border-radius: 5px;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: $table-bg-color; // Sfondo della tabella
+
+  thead {
+    background-color: $table-header-bg-color;
+
+    th {
+      padding: 12px;
+      text-align: left;
+      font-weight: bold;
+      border-bottom: 2px solid $table-border-color;
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #f9f9f9; // Sfondo alternato per righe pari
+      }
+
+      &:hover {
+        background-color: #f1f1f1; // Colore di sfondo al passaggio del mouse
+      }
+
+      td {
+        padding: 10px;
+        border-bottom: 1px solid $table-border-color;
+      }
+    }
+  }
+}
+
+button {
+  background-color: $button-bg-color;
+  color: $button-text-color;
+  border: none;
+  border-radius: $button-border-radius;
+  padding: $button-padding;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $button-hover-bg-color;
+  }
+
+  & + & {
+    margin-left: 10px; // Spazio tra i pulsanti
+  }
+}
+
+// Media query per la reattività
+@media (max-width: 768px) {
+  table {
+    font-size: 14px; // Font più piccolo su mobile
+  }
+
+  button {
+    padding: 8px 10px; // Dimensioni più piccole per i pulsanti su mobile
+  }
+}

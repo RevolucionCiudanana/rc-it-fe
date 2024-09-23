@@ -1,0 +1,20 @@
+<div class="container lista-events">
+    <!-- <div class="actions-wrapper">
+        <button class='action' type="button" (click)="goToPageCreateEvent()">
+            <i class="fa-solid fa-plus"></i>Crea evento
+        </button>
+    </div> -->
+    <div class="empty-message-wrapper" *ngIf="events.length==0">
+        <span>Non ci sono eventi</span>
+    </div>
+    <div class="events-container" *ngIf="events.length > 0">
+        <div class="event-card" *ngFor="let event of events">
+            <h5>{{ event.title }} </h5>
+            <span>{{ event.date | date:'dd/MM/yyyy' }}</span>
+            <img [src]="event.image" alt="{{ event.title }}">
+            <p>{{ event.description }}</p>
+        </div>
+    </div>
+
+
+</div>

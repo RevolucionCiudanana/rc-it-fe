@@ -1,0 +1,40 @@
+<form [formGroup]="step1Form">
+    <legend>Inserisci dettagli evento</legend>
+    <div class="fieldset-container">
+        <fieldset>
+            <label for="organizers">Seleziona organizzatori:</label>
+            <select id="organizers" formControlName="organizers" multiple>
+                <option *ngFor="let organizer of organizers" [ngValue]="organizer.uuid">{{ organizer.name }}</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="name">Nome evento:</label>
+            <input id="name" type="text" formControlName="name" placeholder="CONCERTO">
+        </fieldset>
+        <fieldset>
+            <label for="category">Seleziona categoria:</label>
+            <select id="category" formControlName="category">
+                <option value="concert">Concerto</option>
+                <option value="standup">Standup</option>
+                <option value="musical">Musical</option>
+                <option value="theater">Teatro</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="description">Descrizione evento:</label>
+            <textarea id="description" formControlName="description" rows="4" cols="50" maxlength="200"
+                placeholder="Descrivi il tuo evento" (input)="updateCharacterCount()"></textarea>
+            <div>
+                <small>{{ characterCount }}/200 caratteri</small>
+            </div>
+        </fieldset>
+        <fieldset>
+            <label for="imageUrl">URL immagine:</label>
+            <input type="url" id="imageUrl" formControlName="imageUrl" placeholder="http://example.com/immagine.jpg">
+        </fieldset>
+    </div>
+    {{step1Form.value | json}}
+    <div class="button-container">
+        <button class="btn-primary" type="button" [disabled]="!step1Form.valid" (click)="goNext()">Prossimo</button>
+    </div>
+</form>

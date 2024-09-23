@@ -1,0 +1,32 @@
+<header>
+  <nav class="navbar">
+    <div class="logo-wrapper">
+      <a routerLink="/">
+        <img src="assets/logos/logo-rc.png" alt="RC Italia Logo" />
+      </a>
+    </div>
+
+    <div class="menu-wrapper">
+      <div class="list-menu">
+        <div class="item-menu"><a routerLink="/">Home</a></div>
+        <div class="item-menu"><a routerLink="/become-member">Diventa membro</a></div>
+        <div class="item-menu"><a routerLink="/events">Eventos</a></div>
+        <div class="item-menu"><a routerLink="/calendario">Calendario</a></div>
+        <div class="item-menu"><a routerLink="/organigramma">Organigramma</a></div>
+        <div class="item-menu"><a routerLink="/contacts">Contatti</a></div>
+      </div>
+    </div>
+
+    <div *ngIf="isAuthenticated">
+      <app-cart-icon></app-cart-icon>
+    </div>
+
+    <div class="profile-wrapper" *ngIf="isAuthenticated">
+      <a (click)="toggleMenuUser()">
+        <i class="fas fa-user"></i> <span>{{ user.name | titlecase }}</span>
+      </a>
+    </div>
+
+  </nav>
+
+</header>

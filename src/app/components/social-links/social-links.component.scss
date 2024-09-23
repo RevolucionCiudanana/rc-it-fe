@@ -1,0 +1,31 @@
+@import "../../../assets/scss/colors.scss";
+.social-links {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 2rem;
+  }
+
+  li:last-child {
+    margin-right: 0;
+  }
+
+  a {
+    color: $primary-color; // Cambia il colore del link se necessario
+    text-decoration: none;
+    font-size: 2rem;
+
+    &:hover {
+      -webkit-background-clip: text; /* Safari */
+      -webkit-text-fill-color: transparent; /* Safari */
+      background-clip: text !important;
+      line-height: 1;
+      background: $primary-color;
+    }
+  }
+}

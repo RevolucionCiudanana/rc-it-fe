@@ -1,0 +1,14 @@
+# esclusioni generiche
+.angular/
+.idea
+.idea/**
+.vscode
+.vscode/**
+*.iml
+target
+node_modules
+**/generated-sources/**
+.DS_Store
+dist/
+# personale
+parametri_deploy.md

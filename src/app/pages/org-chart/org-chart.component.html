@@ -1,0 +1,138 @@
+<div class="nav-bar">
+<ul>
+    <li [class.selected]="currentCity === 'Italia'" (click)="switchCity('Italia')">Italia</li>
+    <li [class.selected]="currentCity === 'Milano'" (click)="switchCity('Milano')">Milano</li>
+    <li [class.selected]="currentCity === 'Roma'" (click)="switchCity('Roma')">Roma</li>
+    <li [class.selected]="currentCity === 'Genova'" (click)="switchCity('Genova')">Genova</li>
+</ul>
+</div>
+
+<div class="user-container" *ngIf="currentCity === 'Italia'">
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Mary Chávez" />
+            <h3>Mary Chávez</h3>
+            <p>Directora</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Néstor Carranza" />
+            <h3>Néstor Carranza</h3>
+            <p>Subdirector</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Jury Cárdenas" />
+            <h3>Jury Cárdenas</h3>
+            <p>Secretaria</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Byron Contreras" />
+            <h3>Byron Contreras</h3>
+            <p>Asesoría <br> Económica</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="José Quezada" />
+            <h3>José Quezada</h3>
+            <p>Asesoría <br>Articulación Política</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Alexandra Rivera" />
+            <h3>Alexandra Rivera</h3>
+            <p>Asesoría <br>Mujeres</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/anthonyavila.jpeg" alt="Anthony Avila" />
+            <h3>Anthony Avila</h3>
+            <p>Asesoría <br> Comunicación</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Darwin Romero" />
+            <h3>Darwin Romero</h3>
+            <p>Asesoría <br> Formación Política</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Gabriel Ronquillo" />
+            <h3>Gabriel Ronquillo</h3>
+            <p>Asesoría <br> Juventud</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Fabricio Rivadeneira" />
+            <h3>Fabricio Rivadeneira</h3>
+            <p>Asesoría <br> Pueblos y Nacionalidades</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Patria Márquez" />
+            <h3>Patria Márquez</h3>
+            <p>Asesoría <br> Pueblos y Nacionalidades</p>
+        </div>
+    </div>
+</div>
+
+<div class="user-container" *ngIf="currentCity === 'Milano'">
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Mario Rossi" />
+            <h3>Mario Rossi</h3>
+            <p>Director Milano</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Lucia Bianchi" />
+            <h3>Lucia Bianchi</h3>
+            <p>Subdirector Milano</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Marco Verdi" />
+            <h3>Marco Verdi</h3>
+            <p>Secretaria Milano</p>
+        </div>
+    </div>
+</div>
+
+<div class="user-container" *ngIf="currentCity === 'Roma'">
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Giulia Neri" />
+            <h3>Giulia Neri</h3>
+            <p>Director Roma</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Francesco Gallo" />
+            <h3>Francesco Gallo</h3>
+            <p>Subdirector Roma</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Sofia Colombo" />
+            <h3>Sofia Colombo</h3>
+            <p>Secretaria Roma</p>
+        </div>
+    </div>
+</div>
+
+<div class="user-container" *ngIf="currentCity === 'Genova'">
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Alessandro Ferri" />
+            <h3>Alessandro Ferri</h3>
+            <p>Director Genova</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Elena Moretti" />
+            <h3>Elena Moretti</h3>
+            <p>Subdirector Genova</p>
+        </div>
+        <div class="user">
+            <img src="assets/images/organigramma/avatar.jpg" alt="Luca Romano" />
+            <h3>Luca Romano</h3>
+            <p>Secretaria Genova</p>
+        </div>
+    </div>
+</div>

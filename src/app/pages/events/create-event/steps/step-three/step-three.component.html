@@ -1,0 +1,45 @@
+<form [formGroup]="step3Form">
+    <legend>Le tue informazioni</legend>
+    <div class="fieldset-container">
+        <fieldset>
+            <label for="fullName">Nominativi:</label>
+            <input id="fullName" type="text" formControlName="fullName" placeholder="Il tuo nome e cognome">
+            <div class="errors-container">
+                <div class="errors"
+                    *ngIf="step3Form.get('fullName')?.errors && (step3Form.get('fullName')?.dirty || step3Form.get('fullName')?.touched)">
+                    <div *ngIf="step3Form.get('fullName')?.errors?.['required']">Nome è richiesto</div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <label for="email">Email:</label>
+            <input id="email" type="email" formControlName="email" placeholder="mail@gmail.com">
+            <div class="errors-container">
+                <div class="errors"
+                    *ngIf="step3Form.get('email')?.errors && (step3Form.get('email')?.dirty || step3Form.get('email')?.touched)">
+                    <div *ngIf="step3Form.get('email')?.errors?.['required']">Email è richiesta</div>
+                    <div *ngIf="step3Form.get('email')?.errors?.['email']">Email non è valida</div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <label>
+                <input type="checkbox" formControlName="disclaimer">
+                Accetto l'utilizzo dei miei dati personali.
+            </label>
+            <div class="errors-container">
+                <div class="errors"
+                    *ngIf="step3Form.get('disclaimer')?.errors && (step3Form.get('disclaimer')?.dirty || step3Form.get('disclaimer')?.touched)">
+                    <div *ngIf="step3Form.get('disclaimer')?.errors?.['required']">È necessario accettare il disclaimer.
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="button-container">
+        <button class="btn-secondary" type="button" (click)="goBack()">Indietro</button>
+        <button class="btn-primary"  type="button" [disabled]="!step3Form.valid" (click)="goNext()">Crea evento</button>
+    </div>
+</form>

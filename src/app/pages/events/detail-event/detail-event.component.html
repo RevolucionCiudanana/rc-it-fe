@@ -1,0 +1,30 @@
+<div class="detail-event container">
+    <div class="row">
+        <div class="col-md-3" [@fadeInLeftAnimation]>
+            <div class="heading-wrapper card-bg">
+                <span class="name">{{ event?.title }}</span>
+                <div class="date-wrapper">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>{{ event?.date | date: 'EEEE d MMMM y - HH:mm' }}</span>
+                </div>
+                <div class="location-wrapper">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Forum Assago, via dali, 28 Assago</span>
+                </div>
+            </div>
+            <div class="preview-image-wrapper card-bg">
+                <img [src]="event?.image" alt="Event Image">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="ticket-list-wrapper" [@fadeInAnimation]>
+                
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="organizers-wrapper">
+
+            </div>
+        </div>
+    </div>
+</div>

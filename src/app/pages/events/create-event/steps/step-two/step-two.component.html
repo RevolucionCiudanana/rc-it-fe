@@ -1,0 +1,47 @@
+<form [formGroup]="step2Form">
+    <legend>Completa l'evento</legend>
+    <div class="fieldset-container">
+        <fieldset>
+            <label for="location">Ubicazione:</label>
+            <input type="text" id="location" formControlName="location" placeholder="Indirizzo o luogo">
+        </fieldset>
+        <fieldset>
+            <label for="date">Data e ora:</label>
+            <input type="datetime-local" id="date" formControlName="date">
+        </fieldset>
+        <fieldset>
+            <label for="capacity">Capacità:</label>
+            <input type="number" id="capacity" formControlName="capacity" placeholder="es. 100">
+        </fieldset>
+        <hr>
+        <fieldset formArrayName="products" class="products">
+            <legend>Biglietti</legend>
+            <div class="product" *ngFor="let product of products.controls; let i=index" [formGroupName]="i">
+
+                <label for="name-{{i}}">Nome:</label>
+                <input type="text" id="name-{{i}}" formControlName="name" placeholder="Nome del prodotto">
+
+                <label for="price-{{i}}">Prezzo:</label>
+                <input type="number" id="price-{{i}}" formControlName="price" placeholder="20.00" step="5">
+
+                <label for="maxSellable-{{i}}">Quantità Massima Vendibile:</label>
+                <input type="number" id="maxSellable-{{i}}" formControlName="maxSellable" placeholder="100">
+
+                <button class="btn-remove" type="button" (click)="removeProduct(i)"><i
+                        class="fa-regular fa-circle-xmark"></i></button>
+            </div>
+            <div class="add-product-wrapper">
+                <button class="btn-primary add-product" type="button" (click)="addProduct()"><i
+                        class="fa-solid fa-plus"></i> Biglietto</button>
+            </div>
+        </fieldset>
+        <fieldset>
+            <label for="capacity">Prezzo:</label>
+            <input type="number" id="price" formControlName="price" placeholder="20.00" step="5">
+        </fieldset>
+    </div>
+    <div class="button-container">
+        <button class="btn-secondary" type="button" (click)="goBack()">Indietro</button>
+        <button class="btn-primary" type="button" [disabled]="!step2Form.valid" (click)="goNext()">Prossimo</button>
+    </div>
+</form>

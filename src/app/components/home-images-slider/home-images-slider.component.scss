@@ -1,0 +1,40 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-image {
+  width: 100%;
+  display: block;
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+  font-size: 24px;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}

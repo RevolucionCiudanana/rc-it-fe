@@ -1,0 +1,33 @@
+<div>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name, email, or city" class="search-input" />
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Cellulare</th>
+            <th>Data nascita</th>
+            <th>Indirizzo</th>
+            <th>Città</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of filteredUsers">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.dateOfBirth | date }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.city }}</td>
+            <td>
+                <button (click)="openWhatsApp(user.phone)">WhatsApp</button>
+                <button (click)="sendEmail(user.email)">Email</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

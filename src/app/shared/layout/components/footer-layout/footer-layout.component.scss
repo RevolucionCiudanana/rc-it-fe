@@ -1,0 +1,64 @@
+@import '../../../../../assets/scss/colors.scss';
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1rem;
+  
+  .top {
+    .siteinfo-container {
+      display: flex;
+      flex-direction: column;
+      .logo-wrapper {
+        img {
+          width: 90px;
+          filter: brightness(0) invert(0.5);
+        }
+      }
+      .info-container {
+        @media only screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        align-items: center;
+      }
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      h5 {
+        color: $primary-color;
+      }
+      @media only screen and (max-width: 767px) {
+        align-items: center;
+        display: none;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        @media only screen and (max-width: 767px) {
+          text-align: center;
+        }
+
+        li {
+          margin-bottom: 5px;
+          a {
+            text-decoration: none;
+            color: rgb(173, 170, 170);
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 1.4rem;
+    .copyright {
+      color: #bebcbc;
+      font-size: 0.6rem;
+    }
+  }
+}

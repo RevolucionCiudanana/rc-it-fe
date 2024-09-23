@@ -1,0 +1,16 @@
+.status-wrapper {
+  display: flex;
+  align-items: center;
+  .sent {
+    padding: 0.3rem 0.3rem;
+    color: #ffffff;
+    background-color: rgba(114, 114, 114, 0.851);
+    border-radius: 10px;
+    border: 1px solid #e9e9e9;
+  }
+}
+
+.card-bg {
+  background-color: #fff;
+  border-radius: 5px;
+}

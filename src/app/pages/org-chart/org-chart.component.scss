@@ -1,0 +1,94 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px; // Spaziatura interna
+  border-radius: 5px; // Angoli arrotondati
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    background: white;
+    width: 50%;
+    justify-content: space-around;
+    padding: 0.5rem;
+    border-radius: 10px;
+
+    li {
+      text-transform: uppercase; /* Convert text to uppercase */
+
+      cursor: pointer; // Cambia il cursore al passaggio del mouse
+      color: #1d2732; // Colore del testo
+      transition: color 0.2s; // Transizione sul colore
+
+      &:hover {
+        color: #0056b3; // Colore al passaggio del mouse
+      }
+      &.selected {
+        color: blue; /* Change this to your desired color */
+        font-weight: bold; /* Optional: make the selected city bold */
+      }
+    }
+  }
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Space between rows
+  margin: 2rem;
+  margin-top: 0;
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .user {
+      width: 170px;
+      height: 160px;
+      background-color: #fff; // Card background color
+      border-radius: 10px; // Rounded corners
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+      padding: 10px; // Inner spacing
+      text-align: center; // Center text
+
+      img {
+        border-radius: 50%; // Circular image
+        width: 50px; // Set image width
+        height: 50px; // Set image height
+        object-fit: cover; // Cover the area without distortion
+        margin-bottom: 10px; // Space between image and text
+      }
+
+      h3 {
+        font-size: 0.9rem; // Name font size
+        margin: 0; // Remove default margin
+        color: #333; // Name color
+      }
+
+      p {
+        font-size: 0.7rem; // Role font size
+        color: #666; // Role color
+        margin: 0; // Remove default margin
+      }
+
+      .social-icons {
+        display: flex; // Flex container for icons
+        gap: 4px; // Space between icons
+        justify-content: space-around;
+        img {
+          width: 20px; // Icon width
+          height: 20px; // Icon height
+          object-fit: contain; // Maintain aspect ratio
+        }
+      }
+
+      // Optional: Add hover effect
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); // Enhance shadow on hover
+        transform: translateY(-2px); // Lift effect
+        transition: box-shadow 0.2s ease, transform 0.2s ease; // Smooth transition
+      }
+    }
+  }
+}
