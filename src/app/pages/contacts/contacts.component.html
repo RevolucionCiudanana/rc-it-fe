@@ -1,52 +1,36 @@
-<div class="contacts">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 px-0">
-        <div class="heading">
-          <h1>Contatti</h1>
-          <h6>Se hai delle domande, per favore compilare il form</h6>
-          <div class="divider">
-            <div class="line"></div>
-            <div class="triangle-wrapper">
-              <div class="triangle"></div>
-            </div>
-            <div class="line"></div>
-          </div>
-        </div>
-        <div class="contact-panel">
-          <div class="left-panel">
-            <div class="item">
-              <div class="values">
-                <span class="label">Telefono</span>
-                <span class="value">02344567</span>
-              </div>
-              <div class="icon">
-                <div><i class="fas fa-phone"></i></div>
-
-              </div>
-            </div>
-            <div class="item">
-              <div class="values">
-                <span class="label">Indirizzo</span>
-                <span class="value">Via le mani, 30</span>
-              </div>
-              <div class="icon">
-                <div><i class="fas fa-map-marker-alt"></i></div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="values">
-                <span class="label">Email</span>
-                <span class="value"></span>
-              </div>
-              <div class="icon">
-                <div><i class="fas fa-envelope"></i></div>
-              </div>
-            </div>
-          </div>
-          <div class="right-panel"></div>
-        </div>
+<div class="contacts-container">
+  <div class="row">
+    <div class="col-6">
+      <h2>Contact Us</h2>
+      <div *ngFor="let contact of contacts" class="contact-card">
+        <h3>{{ contact.name }}</h3>
+        <p>
+          <i class="fas fa-envelope"></i>
+          Email: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+        </p>
+        <p>
+          <i class="fas fa-phone"></i>
+          Phone: <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+        </p>
       </div>
     </div>
+    <div class="col-6">
+      <h3>Get in Touch</h3>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" required>
+
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" formControlName="message" required></textarea>
+
+        <button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+      </form>
+    </div>
   </div>
+
+
+
 </div>

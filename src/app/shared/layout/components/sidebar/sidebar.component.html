@@ -8,10 +8,9 @@
             <a routerLink="/events">Eventos</a>
             <a routerLink="/organigramma">Organigramma</a>
             <a routerLink="/contacts">Contatti</a>
+            <hr>
             <a *ngIf="!isAuthenticated" routerLink="/login">Login</a>
             <a *ngIf="isAuthenticated" routerLink="/profile">Profilo</a>
-            <a *ngIf="isAuthenticated" routerLink="/events">Eventi</a>
-            <a *ngIf="isAuthenticated" routerLink="/list-organizers">Organizzatori</a>
             <hr>
             <a *ngIf="isAuthenticated" (click)="logout()">Esci</a>
         </nav>

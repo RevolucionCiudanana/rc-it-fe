@@ -1,3 +1,5 @@
+@import "../../../assets/scss/colors.scss";
+
 .nav-bar {
   display: flex;
   justify-content: space-around;
@@ -8,25 +10,25 @@
     list-style-type: none;
     display: flex;
     gap: 20px;
-    background: white;
     width: 50%;
     justify-content: space-around;
-    padding: 0.5rem;
-    border-radius: 10px;
 
     li {
       text-transform: uppercase; /* Convert text to uppercase */
-
+      padding: 0.5rem 3rem;
       cursor: pointer; // Cambia il cursore al passaggio del mouse
       color: #1d2732; // Colore del testo
       transition: color 0.2s; // Transizione sul colore
+      background: white;
+      border-radius: 20px;
 
       &:hover {
         color: #0056b3; // Colore al passaggio del mouse
       }
       &.selected {
-        color: blue; /* Change this to your desired color */
+        color: rgb(255, 255, 255); /* Change this to your desired color */
         font-weight: bold; /* Optional: make the selected city bold */
+        background-color: $primary-color;
       }
     }
   }

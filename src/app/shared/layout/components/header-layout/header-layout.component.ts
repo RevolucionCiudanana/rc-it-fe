@@ -22,30 +22,6 @@ export class HeaderLayoutComponent implements OnInit {
     });
   }
 
-  @HostListener('document:click', ['$event'])
-  onClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if (!this.isMenuUserOpen || target.closest('.profile-wrapper') || target.closest('.profile-menu')) {
-      return;
-    }
-    this.isMenuUserOpen = false;
-  }
 
-
-  toggleMenuUser(): void {
-    this.isMenuUserOpen = !this.isMenuUserOpen;
-  }
-
-  closeMenuUser(): void {
-    this.isMenuUserOpen = false;
-  }
-
-
-  toggleMenuModal(): void {
-    this.isMenuModalOpen = !this.isMenuModalOpen;
-  }
-  closeMenuModal() {
-    this.isMenuModalOpen = false;
-  }
 
 }

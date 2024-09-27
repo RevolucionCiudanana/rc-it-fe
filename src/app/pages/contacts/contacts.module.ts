@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { ContactsComponent } from './contacts.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { ContactsComponent } from './contacts.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ContactsRoutingModule
   ]
 })
