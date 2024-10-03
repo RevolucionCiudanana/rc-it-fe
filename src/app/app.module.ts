@@ -11,7 +11,7 @@ import { ProfileModule } from './pages/profile/profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { reducers, metaReducers } from './stores/global.reducers';
 import { effects } from './stores/global.effects';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 //Ngrx Store
@@ -30,9 +30,15 @@ import { CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 
 import localeIt from '@angular/common/locales/it';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 registerLocaleData(localeIt);
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +55,13 @@ registerLocaleData(localeIt);
     ProfileModule,
     AuthenticationModule,
     ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,

@@ -1,34 +1,47 @@
 <div class="homepage container-fluid">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 p-0">
       <app-home-images-slider [imageNames]="imageUrls"></app-home-images-slider>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5 p-0">
       <div class="map-container">
         <img src="assets/images/homepage/italy.png" alt="RC Italia Vector" class="img-fluid" />
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7 p-0">
       <div class="main-title">
-        <span>BENVENUTI</span>
+        <span>{{ 'HOMEPAGE_WELCOME' | translate }}</span>
         <p class="description">
-          Desde 2018, los ecuatorianos han sufrido la inestabilidad económica y la crisis de
-          violencia, pasando de ser el país más seguro de América Latina al más peligroso. Nuestros líderes han fallado
-          repetidamente en solucionar estos problemas. Pero tú tienes la oportunidad de cambiar esto. La Revolución
-          Ciudadana comprende estas luchas porque también las hemos enfrentado y superado. En 2025, tenemos una nueva
-          oportunidad para construir un Ecuador libre de violencia, con empleo y seguridad. Juntos, podemos crear un
-          país más fuerte y resiliente.
+        {{ 'HOMEPAGE_DESCRIPTION' | translate }}
         </p>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-12">
-      <app-social-media></app-social-media>
+    <div class="col-12 p-0">
+      <div class="social-media-container">
+        <div class="image-section">
+          <img src="assets/images/homepage/promo.png" alt="Promotional Image" class="promotional-image">
+        </div>
+      
+        <div class="follow-us-section">
+          <div class="header">
+            <h3>{{ 'HOMEPAGE_SOCIAL_TITLE' | translate }}</h3>
+              <h2>{{ 'HOMEPAGE_SOCIAL_SUBTITLE' | translate }}</h2>
+          </div>
+          <div class="social-links">
+            <a class="social-link" *ngFor="let link of socialMediaLinks" [href]="link.link" target="_blank"
+              rel="noopener noreferrer">
+              <i [class]="link.icon"></i>
+              <span>{{ link.handle }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

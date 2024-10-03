@@ -1,52 +1,54 @@
 <div class="become-member">
     <div class="row">
-        <div class="col-6">
+        <div class="col-md-6 p-0">
 
         </div>
-        <div class="col-6">
+        <div class="col-md-6 p-0">
             <div class="card">
-                <h2>Diventa membro</h2>
+                <h2>{{ 'BECOME_MEMBER_TITLE' | translate }}</h2>
                 <div class="step" [ngClass]="{'active': currentStep === 1}">
                     <form [formGroup]="memberForm">
                         <div>
-                            <label for="name">Nome:</label>
+                            <label for="name">{{ 'FORM_FIELD_NAME' | translate }}:</label>
                             <input type="text" id="name" formControlName="name">
                         </div>
                         <div>
-                            <label for="surname">Cognome:</label>
+                            <label for="surname">{{ 'FORM_FIELD_SURNAME' | translate }}:</label>
                             <input type="text" id="surname" formControlName="surname">
                         </div>
                         <div>
-                            <label for="email">Email:</label>
+                            <label for="email">{{ 'FORM_FIELD_EMAIL' | translate }}:</label>
                             <input type="email" id="email" formControlName="email">
                         </div>
                         <div>
-                            <label for="cellphone">Telefono cellulare:</label>
+                            <label for="cellphone">{{ 'FORM_FIELD_CELLPHONE' | translate }}:</label>
                             <input type="text" id="cellphone" formControlName="cellphone">
                         </div>
-                        <div>
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" formControlName="password">
-                        </div>
                         <button type="button" (click)="nextStep()"
-                            [disabled]="memberForm.get('name')?.invalid || memberForm.get('surname')?.invalid || memberForm.get('email')?.invalid || memberForm.get('cellphone')?.invalid || memberForm.get('password')?.invalid">Avanti</button>
+                            [disabled]="memberForm.get('name')?.invalid || memberForm.get('surname')?.invalid || memberForm.get('email')?.invalid || memberForm.get('cellphone')?.invalid">Avanti</button>
                     </form>
                 </div>
 
                 <div class="step" [ngClass]="{'active': currentStep === 2}">
                     <form [formGroup]="memberForm">
                         <div>
+                            <label for="country">{{ 'FORM_FIELD_COUNTRY' | translate }}:</label>
+                            <select id="country" formControlName="country">
+                                <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
+                            </select>
+                        </div>
+                        <div>
                             <label for="city">Città:</label>
                             <input type="text" id="city" formControlName="city">
                         </div>
                         <div>
-                            <label for="sector">Settore:</label>
+                            <label for="sector">{{ 'FORM_FIELD_SECTOR' | translate }}:</label>
                             <select id="sector" formControlName="sector" (change)="onSectorChange($event)">
                                 <option *ngFor="let sector of sectors" [value]="sector">{{ sector }}</option>
                             </select>
                         </div>
                         <div>
-                            <label for="profession">Professione:</label>
+                            <label for="profession">{{ 'FORM_FIELD_PROFESSION' | translate }}:</label>
                             <select id="profession" formControlName="profession">
                                 <option *ngFor="let profession of filteredProfessions" [value]="profession">{{ profession }}</option>
                             </select>
@@ -55,6 +57,7 @@
                         <button type="button" (click)="submit()"
                             [disabled]="memberForm.get('city')?.invalid || memberForm.get('profession')?.invalid">Invia</button>
                     </form>
+                    {{memberForm.value |json}}
                 </div>
 
                 <div class="step" [ngClass]="{'active': currentStep === 3}">

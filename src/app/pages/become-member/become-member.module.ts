@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BecomeMemberComponent } from './become-member.component';
 import { BecomeMemberRoutingModule } from './become-member-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        TranslateModule,
         BecomeMemberRoutingModule
     ]
 })

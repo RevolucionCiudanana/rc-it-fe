@@ -3,6 +3,13 @@
   flex-direction: column;
   height: 100vh;
   main {
-    margin: 1rem;
+    margin: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .layout {
+    main {
+      margin: 0.1rem;
+    }
   }
 }

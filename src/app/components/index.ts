@@ -7,9 +7,9 @@ import { DeskThreeComponent } from './desk-three/desk-three.component';
 import { GenericTooltipComponent } from './generic-tooltip/generic-tooltip.component';
 import { WhatsappButtonComponent } from './whatsapp-button/whatsapp-button.component';
 import { CartIconComponent } from './cart-icon/cart-icon.component';
-import { SocialMediaComponent } from './social-media/social-media.component';
 import { HomeImagesSliderComponent } from './home-images-slider/home-images-slider.component';
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 
 export const genericComponentsList: any[] = [
-    GradientTitleComponent, GenericButtonComponent, GenericTooltipComponent, SocialLinksComponent, HomeImagesSliderComponent, SocialMediaComponent, GenericParagraphComponent, InfoTooltipComponent, WhatsappButtonComponent, CartIconComponent, DeskThreeComponent
+    GradientTitleComponent, GenericButtonComponent, GenericTooltipComponent, SocialLinksComponent, LanguageSwitcherComponent, HomeImagesSliderComponent, GenericParagraphComponent, InfoTooltipComponent, WhatsappButtonComponent, CartIconComponent, DeskThreeComponent
 ];

@@ -1,0 +1,48 @@
+.language-switcher {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    img {
+      width: 30px; // dimensione dell'immagine
+      height: auto; // mantiene le proporzioni
+    }
+
+    &:hover {
+      opacity: 0.7; // effetto hover
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    bottom: 40px; // adjust this based on your layout
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1000;
+    button {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      width: 100%;
+      border: none;
+      background: none;
+      text-align: left;
+      gap: 4px;
+
+      &:hover {
+        background-color: #f0f0f0; // hover effect for dropdown items
+      }
+    }
+  }
+}
