@@ -1,11 +1,13 @@
 <div class="become-member">
     <div class="row">
         <div class="col-md-6 p-0">
-
+            <div class="video-container">
+                <video src="assets/videos/animation-become.mp4" loop muted autoplay></video>
+                <span class="become-member-title">{{ 'BECOME_MEMBER_TITLE' | translate }}</span>
+            </div>
         </div>
         <div class="col-md-6 p-0">
             <div class="card">
-                <h2>{{ 'BECOME_MEMBER_TITLE' | translate }}</h2>
                 <div class="step" [ngClass]="{'active': currentStep === 1}">
                     <form [formGroup]="memberForm">
                         <div>
@@ -24,43 +26,112 @@
                             <label for="cellphone">{{ 'FORM_FIELD_CELLPHONE' | translate }}:</label>
                             <input type="text" id="cellphone" formControlName="cellphone">
                         </div>
-                        <button type="button" (click)="nextStep()"
-                            [disabled]="memberForm.get('name')?.invalid || memberForm.get('surname')?.invalid || memberForm.get('email')?.invalid || memberForm.get('cellphone')?.invalid">Avanti</button>
+                        <div class="buttons-container">
+                            <button type="button" (click)="nextStep()"
+                                [disabled]="memberForm.get('name')?.invalid || memberForm.get('surname')?.invalid || memberForm.get('email')?.invalid || memberForm.get('cellphone')?.invalid">Avanti</button>
+                        </div>
                     </form>
                 </div>
 
                 <div class="step" [ngClass]="{'active': currentStep === 2}">
                     <form [formGroup]="memberForm">
+
                         <div>
+                            <label for="search_address">{{ 'FORM_FIELD_SEARCHADDRESS' | translate }}</label>
+                            <div class="search-input-container">
+                                <input type="text" id="search_address" formControlName="search_address">
+                                <button (click)="clearAddress()"><i class="fas fa-times"></i></button>
+                                <button (click)="searchAddress()"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="results-container" *ngIf="results.length > 0">
+                            <h4>{{ 'FORM_FIELD_SELECT_RESULT' | translate }}</h4>
+                            <ul>
+                                <li *ngFor="let result of results" (click)="selectAddress(result)">{{
+                                    result.display_name }}</li>
+                                <!-- Adjust according to the data structure -->
+                            </ul>
+                        </div>
+                        <div class="result-not-found" *ngIf="resultNotFound">
+                            <h4>{{ 'FORM_FIELD_NOT_FOUND_RESULT' | translate }}</h4>
+                        </div>
+                        <div *ngIf="memberForm.get('address')?.value">
+                            <label for="address">{{ 'FORM_FIELD_ADDRESS' | translate }}:</label>
+                            <textarea id="address" formControlName="address" readonly></textarea>
+                        </div>
+                        <div class="hidden-field">
                             <label for="country">{{ 'FORM_FIELD_COUNTRY' | translate }}:</label>
-                            <select id="country" formControlName="country">
-                                <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
-                            </select>
+                            <input type="text" id="country" formControlName="country" readonly>
                         </div>
-                        <div>
-                            <label for="city">Città:</label>
-                            <input type="text" id="city" formControlName="city">
+                        <div class="hidden-field">
+                            <label for="country_code">Country Code:</label>
+                            <input type="text" id="country_code" formControlName="country_code" readonly>
                         </div>
-                        <div>
-                            <label for="sector">{{ 'FORM_FIELD_SECTOR' | translate }}:</label>
-                            <select id="sector" formControlName="sector" (change)="onSectorChange($event)">
-                                <option *ngFor="let sector of sectors" [value]="sector">{{ sector }}</option>
-                            </select>
+                        <div class="hidden-field">
+                            <label for="county">County:</label>
+                            <input type="text" id="county" formControlName="county" readonly>
                         </div>
-                        <div>
-                            <label for="profession">{{ 'FORM_FIELD_PROFESSION' | translate }}:</label>
-                            <select id="profession" formControlName="profession">
-                                <option *ngFor="let profession of filteredProfessions" [value]="profession">{{ profession }}</option>
-                            </select>
+                        <div class="hidden-field">
+                            <label for="house_number">House number:</label>
+                            <input type="text" id="house_number" formControlName="house_number" readonly>
                         </div>
-                        <button type="button" (click)="previousStep()">Indietro</button>
-                        <button type="button" (click)="submit()"
-                            [disabled]="memberForm.get('city')?.invalid || memberForm.get('profession')?.invalid">Invia</button>
+                        <div class="hidden-field">
+                            <label for="postcode">Postcode:</label>
+                            <input type="text" id="postcode" formControlName="postcode" readonly>
+                        </div>
+                        <div class="hidden-field">
+                            <label for="quarter">Quarter:</label>
+                            <input type="text" id="quarter" formControlName="quarter" readonly>
+                        </div>
+                        <div class="hidden-field">
+                            <label for="road">Road:</label>
+                            <input type="text" id="road" formControlName="road" readonly>
+                        </div>
+                        <div class="hidden-field">
+                            <label for="state">State:</label>
+                            <input type="text" id="state" formControlName="state" readonly>
+                        </div>
+                        <div class="hidden-field">
+                            <label for="town">Town:</label>
+                            <input type="text" id="town" formControlName="town" readonly>
+                        </div>
+                        <div class="buttons-container">
+                            <button type="button" (click)="previousStep()">Indietro</button>
+                            <button type="button" (click)="nextStep()"
+                                [disabled]="memberForm.get('address')?.invalid">Avanti</button>
+                        </div>
+
                     </form>
-                    {{memberForm.value |json}}
                 </div>
 
                 <div class="step" [ngClass]="{'active': currentStep === 3}">
+                    <form [formGroup]="memberForm">
+
+                        <div>
+                            <label for="sector">{{ 'FORM_FIELD_SECTOR' | translate }}:</label>
+                            <select id="sector" formControlName="sectorId" (change)="onSectorChange($event)">
+                                <option value="null" disabled selected>{{ 'SELECT_OPTION' | translate }}</option>
+                                <option *ngFor="let sector of sectors" [value]="sector.id">{{ sector.name }}</option>
+                            </select>
+                        </div>
+                        <div *ngIf="memberForm.get('sectorId')?.value">
+                            <label for="profession">{{ 'FORM_FIELD_PROFESSION' | translate }}:</label>
+                            <select id="profession" formControlName="professionId">
+                                <option value="null" disabled selected>{{ 'SELECT_OPTION' | translate }}</option>
+
+                                <option *ngFor="let profession of professions" [value]="profession.id">{{
+                                    profession.name}}</option>
+                            </select>
+                        </div>
+                        <div class="buttons-container">
+                            <button type="button" (click)="previousStep()">Indietro</button>
+                            <button type="button" (click)="submit()"
+                                [disabled]="memberForm.get('sectorId')?.invalid || memberForm.get('professionId')?.invalid">Invia</button>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="step" [ngClass]="{'active': currentStep === 4}">
                     <h3>Registrazione riuscita</h3>
                     <p>La tua registrazione è stata completata con successo!</p>
                     <button type="button"

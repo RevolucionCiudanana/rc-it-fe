@@ -5,17 +5,26 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" style="background-color: #46A2DB;">
     <div class="col-md-5 p-0">
-      <div class="map-container">
-        <img src="assets/images/homepage/italy.png" alt="RC Italia Vector" class="img-fluid" />
+      <div class="images-home-container">
+        <div class="correa-container">
+          <img class="correa" src="assets/images/homepage/correa-silueta.webp" alt="Promotional Image">
+        </div>
+        <div class="italy-container">
+          <img class="italy" src="assets/images/homepage/italy.png" alt="RC Italia Vector" />
+          <div class="pointer pointer-1"></div>
+          <div class="pointer pointer-2"></div>
+          <div class="pointer pointer-3"></div>
+        </div>
       </div>
     </div>
-    <div class="col-md-7 p-0">
+
+    <div class="col-md-6 p-0">
       <div class="main-title">
         <span>{{ 'HOMEPAGE_WELCOME' | translate }}</span>
         <p class="description">
-        {{ 'HOMEPAGE_DESCRIPTION' | translate }}
+          {{ 'HOMEPAGE_DESCRIPTION' | translate }}
         </p>
       </div>
     </div>
@@ -24,14 +33,15 @@
   <div class="row">
     <div class="col-12 p-0">
       <div class="social-media-container">
+        <video src="assets/videos/animation-likes.mp4" loop muted autoplay></video>
         <div class="image-section">
           <img src="assets/images/homepage/promo.png" alt="Promotional Image" class="promotional-image">
         </div>
-      
+
         <div class="follow-us-section">
           <div class="header">
             <h3>{{ 'HOMEPAGE_SOCIAL_TITLE' | translate }}</h3>
-              <h2>{{ 'HOMEPAGE_SOCIAL_SUBTITLE' | translate }}</h2>
+            <h2>{{ 'HOMEPAGE_SOCIAL_SUBTITLE' | translate }}</h2>
           </div>
           <div class="social-links">
             <a class="social-link" *ngFor="let link of socialMediaLinks" [href]="link.link" target="_blank"

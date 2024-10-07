@@ -33,6 +33,56 @@
         display: flex;
         flex-direction: column;
 
+        &.hidden-field {
+          display: none;
+        }
+
+        .search-input-container {
+          display: flex;
+          flex-direction: row !important;
+          align-items: center; // Vertically center the input and the button
+          justify-content: flex-start; // Align input and button next to each other
+          gap: 1px;
+          label {
+            margin-right: 10px; // Space between the label and the input
+          }
+
+          input[type="text"] {
+            flex: 1; // Takes up available space
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px; // Space between the input and the button
+          }
+
+          button {
+            padding: 12px;
+            background-color: #1999d5; // Primary color
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+          }
+
+          button:hover {
+            background-color: darken(#1999d5, 10%);
+          }
+        }
+        &.result-not-found {
+          display: flex;
+          background: #efefef;
+          padding: 0.4rem;
+          align-items: center;
+          justify-content: center;
+          border-radius: 5px;
+          h4 {
+            color: rgb(233, 98, 98);
+            font-size: 1rem;
+          }
+        }
+
         label {
           margin-bottom: 5px;
           font-weight: bold;
@@ -49,26 +99,114 @@
             outline: none;
           }
         }
-      }
-
-      button {
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: $primary-color; // Usa il colore primario per il bottone
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-
-        &:hover {
-          background-color: darken($primary-color, 10%); // Scurisci il bottone al passaggio del mouse
-        }
-
-        &:disabled {
-          background-color: #ccc; // Grigio per il bottone disabilitato
-          cursor: not-allowed;
+        textarea {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          height: 20vh;
         }
       }
+      .buttons-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        button {
+          width: 45%;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: $primary-color; // Usa il colore primario per il bottone
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+
+          &:hover {
+            background-color: darken(
+              $primary-color,
+              10%
+            ); // Scurisci il bottone al passaggio del mouse
+          }
+
+          &:disabled {
+            background-color: #ccc; // Grigio per il bottone disabilitato
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}
+
+.results-container {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  height: 30vh;
+  h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black; // Usa il colore primario per il titolo
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      background: white;
+
+      &:hover {
+        background-color: lighten(
+          $primary-color,
+          40%
+        ); // Scurisci leggermente il colore di sfondo al passaggio del mouse
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.video-container {
+  position: relative;
+  padding: 0 1rem;
+  video {
+    width: 100%;
+  }
+  .become-member-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "GothamUltra";
+    font-size: 1.5rem;
+    color: white;
+    background-color: #df4747;
+    padding: 9px 22px 9px 9px;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .video-container {
+    padding: 0;
+
+    .become-member-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      width: 60%;
     }
   }
 }

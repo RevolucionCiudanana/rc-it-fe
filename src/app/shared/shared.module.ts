@@ -9,13 +9,15 @@ import { FooterLayoutComponent } from './layout/components/footer-layout/footer-
 import { SidebarComponent } from './layout/components/sidebar/sidebar.component';
 import * as ComponentsList from '../components/index';
 import * as ModalsList from '../modals/index';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [...ComponentsList.genericComponentsList, ...ModalsList.genericModalsList,
-    LayoutComponent, SidebarComponent, HeaderLayoutComponent, FooterLayoutComponent,],
+    LayoutComponent, SidebarComponent,HeaderLayoutComponent, FooterLayoutComponent,],
   imports: [
     CommonModule,
     RouterModule.forChild([]),
+    TranslateModule,
     FormsModule,
     ReactiveFormsModule,
   ],

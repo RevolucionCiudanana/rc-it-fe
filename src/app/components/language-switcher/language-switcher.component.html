@@ -3,7 +3,7 @@
         <img src="assets/flags/{{ currentLanguage }}.png" alt="{{ currentLanguage | titlecase }}" />
     </button>
     <div class="dropdown" *ngIf="isDropdownOpen">
-        <button *ngFor="let lang of languages" (click)="switchLanguage(lang.code)">
+        <button *ngFor="let lang of languages" (click)="switchLanguage(lang.code);">
             <img src="assets/flags/{{ lang.code }}.png" alt="{{ lang.name }}" />
             {{ lang.name }}
         </button>

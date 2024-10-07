@@ -4,15 +4,16 @@
     <div class="sidebar" [class.active]="isOpen">
         <nav>
             <a routerLink="/">Home</a>
-            <a routerLink="/become-member">Diventa membro</a>
-            <a routerLink="/events">Eventos</a>
-            <a routerLink="/organigramma">Organigramma</a>
-            <a routerLink="/contacts">Contatti</a>
+            <a routerLink="/become-member">{{ 'MENU_BECOME_MEMBER' | translate }}</a>
+            <a routerLink="/events">{{ 'MENU_EVENTS' | translate }}</a>
+            <a routerLink="/calendar">{{ 'MENU_BECOME_CALENDAR' | translate }}</a>
+            <a routerLink="/organigramma">{{ 'MENU_BECOME_ORGANIGRAM' | translate }}</a>
+            <a routerLink="/contacts">{{ 'MENU_BECOME_CONTACTS' | translate }}</a>
             <hr>
             <a *ngIf="!isAuthenticated" routerLink="/login">Login</a>
-            <a *ngIf="isAuthenticated" routerLink="/profile">Profilo</a>
+            <a *ngIf="isAuthenticated" routerLink="/profile">{{ 'MENU_PROFILE' | translate }}</a>
             <hr>
-            <a *ngIf="isAuthenticated" (click)="logout()">Esci</a>
+            <a *ngIf="isAuthenticated" (click)="logout()">Lagout</a>
         </nav>
     </div>
     <button class="menu-button" (click)="onToggle()">&#9776;</button>

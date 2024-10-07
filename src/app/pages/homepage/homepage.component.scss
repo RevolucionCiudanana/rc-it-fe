@@ -6,11 +6,21 @@
       width: 100%;
     }
   }
-  .map-container {
+  .images-home-container {
     display: flex;
     justify-content: center;
-    img {
-      width: 350px;
+    .correa-container {
+      width: 35%;
+      .correa {
+        width: 100%;
+      }
+    }
+    .italy-container {
+      position: relative;
+      width: 65%;
+      .italy {
+        width: 100%;
+      }
     }
   }
   .main-title {
@@ -33,15 +43,23 @@
   .social-media-container {
     display: flex;
     justify-content: space-evenly;
-    background-color: #46a2db;
-    padding: 20px;
+    background-color: #121c4b;
     border-radius: 10px;
-
+    position: relative;
+    overflow: hidden;
+    video {
+      position: absolute;
+      width: auto;
+      height: 100%;
+      z-index: 1;
+      left: 0;
+    }
     .image-section {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 2;
       .promotional-image {
         width: 100%;
         max-width: 300px;
@@ -73,7 +91,8 @@
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
-
+      padding: 1rem;
+      z-index: 2;
       .header {
         margin-bottom: 20px;
 
@@ -131,6 +150,62 @@
             padding: 1rem;
           }
         }
+      }
+    }
+  }
+}
+
+.pointer {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border: 2px solid white;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+  transform: translate(-50%, -50%); /* Center each pointer */
+}
+
+/* Individual positions for each pointer */
+.pointer-1 {
+  top: 47%; /* Roma*/
+  left: 52%;
+}
+
+.pointer-2 {
+ top: 24%; /* Milano*/
+  left: 35%;
+}
+
+.pointer-3 {
+  top: 30%; /* Genova*/
+  left: 30%;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  50% {
+    width: 15px;
+    height: 15px;
+    opacity: 0.5;
+  }
+  100% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage {
+    .social-media-container {
+      .image-section {
+        justify-content: flex-end;
       }
     }
   }
