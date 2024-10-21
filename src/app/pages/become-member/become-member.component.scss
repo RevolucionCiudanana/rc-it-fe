@@ -178,10 +178,10 @@
   }
 }
 
-.video-container {
+.image-container {
   position: relative;
   padding: 0 1rem;
-  video {
+  img {
     width: 100%;
   }
   .become-member-title {
@@ -198,7 +198,7 @@
   }
 }
 @media (max-width: 768px) {
-  .video-container {
+  .image-container {
     padding: 0;
 
     .become-member-title {
