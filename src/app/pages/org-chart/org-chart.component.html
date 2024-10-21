@@ -1,25 +1,26 @@
 <div class="nav-bar">
-<ul>
-    <li [class.selected]="currentCity === 'Italia'" (click)="switchCity('Italia')">Italia</li>
-    <li [class.selected]="currentCity === 'Milano'" (click)="switchCity('Milano')">Milano</li>
-    <li [class.selected]="currentCity === 'Roma'" (click)="switchCity('Roma')">Roma</li>
-    <li [class.selected]="currentCity === 'Genova'" (click)="switchCity('Genova')">Genova</li>
-</ul>
+    <ul>
+        <li [class.selected]="currentCity === 'Italia'" (click)="switchCity('Italia')">Italia</li>
+        <li [class.selected]="currentCity === 'Milano'" (click)="switchCity('Milano')">Milano</li>
+        <li [class.selected]="currentCity === 'Roma'" (click)="switchCity('Roma')">Roma</li>
+        <li [class.selected]="currentCity === 'Genova'" (click)="switchCity('Genova')">Genova</li>
+    </ul>
 </div>
 
 <div class="user-container" *ngIf="currentCity === 'Italia'">
     <div class="row">
         <div class="user">
-            <img src="assets/images/organigramma/avatar.jpg" alt="Mary Chávez" />
-            <h3>Mary Chávez</h3>
-            <p>Directora</p>
+            <img src="assets/images/organigramma/nestorcarranza.jpeg" alt="Néstor Carranza" />
+            <h3>Néstor Carranza</h3>
+            <p>Director</p>
         </div>
+
     </div>
     <div class="row">
         <div class="user">
-            <img src="assets/images/organigramma/nestorcarranza.jpeg" alt="Néstor Carranza" />
-            <h3>Néstor Carranza</h3>
-            <p>Subdirector</p>
+            <img src="assets/images/organigramma/avatar.jpg" alt="Yadira Olmedo" />
+            <h3>Yadira Olmedo</h3>
+            <p>Subdirectora</p>
         </div>
         <div class="user">
             <img src="assets/images/organigramma/jurycardenas.jpeg" alt="Jury Cárdenas" />
