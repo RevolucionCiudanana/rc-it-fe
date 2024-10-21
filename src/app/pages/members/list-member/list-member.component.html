@@ -1,0 +1,83 @@
+<div class="list-member-container">
+    <h2>List of Members</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <!-- Add filter inputs for all columns -->
+                <th>
+                    <input type="text" placeholder="Filter by Name" [(ngModel)]="filterName"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Surname" [(ngModel)]="filterSurname"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Email" [(ngModel)]="filterEmail"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Cellphone" [(ngModel)]="filterCellphone"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Address" [(ngModel)]="filterAddress"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="date" placeholder="Filter by Birthdate" [(ngModel)]="filterBirthdate"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Sector ID" [(ngModel)]="filterSectorId"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Profession ID" [(ngModel)]="filterProfessionId"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Country" [(ngModel)]="filterCountry"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by County" [(ngModel)]="filterCounty"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
+                    <input type="text" placeholder="Filter by Postcode" [(ngModel)]="filterPostcode"
+                        (input)="filterMembers()" />
+                </th>
+            </tr>
+            <!-- Table headers -->
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Cellphone</th>
+                <th>Address</th>
+                <th>Birthdate</th>
+                <th>Sector ID</th>
+                <th>Profession ID</th>
+                <th>Country</th>
+                <th>County</th>
+                <th>Postcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let member of filteredMembers">
+                <td>{{ member.name }}</td>
+                <td>{{ member.surname }}</td>
+                <td>{{ member.email }}</td>
+                <td>{{ member.cellphone }}</td>
+                <td>{{ member.address }}</td>
+                <td>{{ member.birthdate }}</td>
+                <td>{{ member.sectorId }}</td>
+                <td>{{ member.professionId }}</td>
+                <td>{{ member.country }}</td>
+                <td>{{ member.county }}</td>
+                <td>{{ member.postcode }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

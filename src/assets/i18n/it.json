@@ -1,6 +1,7 @@
 {
-  "MENU_PROFILE":"Profilo",
+  "MENU_PROFILE": "Profilo",
   "MENU_BECOME_MEMBER": "Diventa Membro",
+  "MENU_LIST_MEMBER": "Lista membri",
   "MENU_EVENTS": "Eventi",
   "MENU_BECOME_CALENDAR": "Calendario",
   "MENU_BECOME_ORGANIGRAM": "Organigramma",
@@ -15,6 +16,7 @@
   "FORM_FIELD_EMAIL": "Email",
   "FORM_FIELD_CELLPHONE": "Cellulare",
   "FORM_FIELD_ADDRESS": "Indirizzo",
+  "FORM_FIELD_DATE_OF_BIRTH": "Data di nascita",
   "FORM_FIELD_SECTOR": "Settore",
   "FORM_FIELD_PROFESSION": "Professione",
   "FORM_FIELD_SEARCHADDRESS": "Cerca indirizzo",

@@ -43,8 +43,8 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import(
-            './pages/affiliates/affiliates.module'
-          ).then((m) => m.AffiliatesModule),
+            './pages/members/members.module'
+          ).then((m) => m.MembersModule),
       },
       {
         path: '',
@@ -53,7 +53,7 @@ const routes: Routes = [
             './pages/calendario/calendario.module'
           ).then((m) => m.CalendarioModule),
       },
-      
+
       {
         path: '',
         loadChildren: () =>

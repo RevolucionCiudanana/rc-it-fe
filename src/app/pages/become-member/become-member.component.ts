@@ -5,6 +5,7 @@ import { ProfessionService } from '@services/profession.service';
 import { GeocodingService } from '@services/geocoding.service';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { MemberService } from '@services/member.service';
 
 @Component({
   selector: 'app-become-member',
@@ -13,7 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class BecomeMemberComponent implements OnInit {
   memberForm: FormGroup;
-  currentStep: number = 3;
+  currentStep: number =  1;
   registrationSuccess: boolean = false;
 
   sectors: any;
@@ -29,7 +30,7 @@ export class BecomeMemberComponent implements OnInit {
 
   resultNotFound: boolean = false;
 
-  constructor(private fb: FormBuilder, private geocodingService: GeocodingService, private translate: TranslateService, private sectorService: SectorService, private professionService: ProfessionService) {
+  constructor(private fb: FormBuilder, private geocodingService: GeocodingService, private translate: TranslateService, private sectorService: SectorService, private professionService: ProfessionService, private memberService: MemberService) {
     this.memberForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -37,6 +38,7 @@ export class BecomeMemberComponent implements OnInit {
       cellphone: ['', Validators.required],
       search_address: ['', Validators.required],
       address: ['', Validators.required],
+      birthdate: ['', Validators.required],
       country: [''],
       country_code: [''],
       county: [''],
@@ -199,10 +201,20 @@ export class BecomeMemberComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.memberForm.valid)
     if (this.memberForm.valid) {
-      console.log('Form Submitted', this.memberForm.value);
-      this.currentStep = 4; // Vai allo step di conferma
+      // Call the MemberService to submit the form data
+      this.memberService.createMember(this.memberForm.value).subscribe({
+        next: (response) => {
+          console.log('Member created successfully', response);
+          this.registrationSuccess = true;
+          this.currentStep = 4; // Go to the confirmation step
+        },
+        error: (err) => {
+          console.error('Error creating member:', err);
+        },
+      });
+    } else {
+      console.log('Form is invalid');
     }
   }
 }

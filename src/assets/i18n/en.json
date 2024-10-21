@@ -1,6 +1,7 @@
 {
   "MENU_PROFILE": "Profile",
   "MENU_BECOME_MEMBER": "Become a Member",
+  "MENU_LIST_MEMBER": "Member list",
   "MENU_EVENTS": "Events",
   "MENU_BECOME_CALENDAR": "Calendar",
   "MENU_BECOME_ORGANIGRAM": "Organizational Chart",
@@ -15,6 +16,7 @@
   "FORM_FIELD_EMAIL": "Email",
   "FORM_FIELD_CELLPHONE": "Cellphone",
   "FORM_FIELD_ADDRESS": "Address",
+  "FORM_FIELD_DATE_OF_BIRTH": "Date of birth",
   "FORM_FIELD_SECTOR": "Sector",
   "FORM_FIELD_PROFESSION": "Profession",
   "SELECT_OPTION": "Select option",
