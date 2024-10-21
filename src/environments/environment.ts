@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  endpoint: 'http://localhost:3000/',
+  endpoint: 'https://rc-it-be.onrender.com/',
   googleMapsApiKey: 'x',
   spacesEndpoint: 'x',
   accessKeyId: 'x',
