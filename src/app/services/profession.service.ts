@@ -17,6 +17,10 @@ export class ProfessionService {
 
     getProfessions(sector: any): Observable<Profession[]> {
         const params = { sector: sector };
-        return this.http.get<Profession[]>(API_URL + 'allProfessions', { params });
+        return this.http.get<Profession[]>(API_URL + 'allProfessionsBySector', { params });
+    }
+
+    getAllProfessions(): Observable<Profession[]> {
+        return this.http.get<Profession[]>(API_URL + 'allProfessions');
     }
 }

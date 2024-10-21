@@ -1,67 +1,67 @@
 <div class="list-member-container">
-    <h2>List of Members</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <!-- Add filter inputs for all columns -->
                 <th>
-                    <input type="text" placeholder="Filter by Name" [(ngModel)]="filterName"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_NAME' | translate" [(ngModel)]="filterName"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Surname" [(ngModel)]="filterSurname"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_SURNAME' | translate" [(ngModel)]="filterSurname"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Email" [(ngModel)]="filterEmail"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_EMAIL' | translate" [(ngModel)]="filterEmail"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Cellphone" [(ngModel)]="filterCellphone"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_CELLPHONE' | translate" [(ngModel)]="filterCellphone"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Address" [(ngModel)]="filterAddress"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_ADDRESS' | translate" [(ngModel)]="filterAddress"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="date" placeholder="Filter by Birthdate" [(ngModel)]="filterBirthdate"
+                    <input type="date" [placeholder]="'TABLE_MEMBER_BIRTHDATE' | translate" [(ngModel)]="filterBirthdate"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Sector ID" [(ngModel)]="filterSectorId"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_SECTOR' | translate" [(ngModel)]="filterSectorId"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Profession ID" [(ngModel)]="filterProfessionId"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_PROFESSION' | translate" [(ngModel)]="filterProfessionId"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Country" [(ngModel)]="filterCountry"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_COUNTRY' | translate" [(ngModel)]="filterCountry"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by County" [(ngModel)]="filterCounty"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_COUNTY' | translate" [(ngModel)]="filterCounty"
                         (input)="filterMembers()" />
                 </th>
                 <th>
-                    <input type="text" placeholder="Filter by Postcode" [(ngModel)]="filterPostcode"
+                    <input type="text" [placeholder]="'TABLE_MEMBER_POSTCODE' | translate" [(ngModel)]="filterPostcode"
                         (input)="filterMembers()" />
                 </th>
             </tr>
+
             <!-- Table headers -->
             <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Email</th>
-                <th>Cellphone</th>
-                <th>Address</th>
-                <th>Birthdate</th>
-                <th>Sector ID</th>
-                <th>Profession ID</th>
-                <th>Country</th>
-                <th>County</th>
-                <th>Postcode</th>
+                <th>{{'TABLE_MEMBER_NAME' | translate}}</th>
+                <th>{{'TABLE_MEMBER_SURNAME' | translate}}</th>
+                <th>{{'TABLE_MEMBER_EMAIL' | translate}}</th>
+                <th>{{'TABLE_MEMBER_CELLPHONE' | translate}}</th>
+                <th>{{'TABLE_MEMBER_ADDRESS' | translate}}</th>
+                <th>{{'TABLE_MEMBER_BIRTHDATE' | translate}}</th>
+                <th>{{'TABLE_MEMBER_SECTOR' | translate}}</th>
+                <th>{{'TABLE_MEMBER_PROFESSION' | translate}}</th>
+                <th>{{'TABLE_MEMBER_COUNTRY' | translate}}</th>
+                <th>{{'TABLE_MEMBER_COUNTY' | translate}}</th>
+                <th>{{'TABLE_MEMBER_POSTCODE' | translate}}</th>
             </tr>
         </thead>
         <tbody>
@@ -71,9 +71,9 @@
                 <td>{{ member.email }}</td>
                 <td>{{ member.cellphone }}</td>
                 <td>{{ member.address }}</td>
-                <td>{{ member.birthdate }}</td>
-                <td>{{ member.sectorId }}</td>
-                <td>{{ member.professionId }}</td>
+                <td>{{ member.birthdate | date:"dd/MM/yyyy"}}</td>
+                <td>{{ getSectorName(member.sectorId) }}</td>
+                <td>{{ getProfessionName(member.professionId) }}</td>
                 <td>{{ member.country }}</td>
                 <td>{{ member.county }}</td>
                 <td>{{ member.postcode }}</td>
