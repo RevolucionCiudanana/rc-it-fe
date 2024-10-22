@@ -18,15 +18,19 @@ export class SidebarComponent implements OnInit, OnDestroy {
   isOpen: boolean = false;
   isAuthenticated: boolean = false;
   user!: User;
+  isSubMenuOpen: { [key: string]: boolean } = {};
 
   private subscription!: Subscription;
+
   constructor(private router: Router, private store: Store<{ sidebarState: SidebarState, authState: AuthState }>) { }
 
   ngOnInit() {
+    this.subscription = new Subscription(); // Initialize the subscription
 
     const sidebarSubscription = this.store.select('sidebarState').subscribe(sidebar => {
       this.isOpen = sidebar.isOpen;
     });
+
     const authStateSubscription = this.store.select('authState').subscribe(authState => {
       this.isAuthenticated = authState.isAuthenticated;
       this.user = authState.user;
@@ -36,15 +40,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationEnd) {
         this.store.dispatch(closeSidebar());
       }
-    })
+    });
 
-    if (this.subscription && sidebarSubscription)
-      this.subscription.add(sidebarSubscription);
-    if (this.subscription && authStateSubscription)
-      this.subscription.add(authStateSubscription);
-    if (this.subscription && routerEventsSubscription)
-      this.subscription.add(routerEventsSubscription);
-
+    this.subscription.add(sidebarSubscription);
+    this.subscription.add(authStateSubscription);
+    this.subscription.add(routerEventsSubscription);
   }
 
   ngOnDestroy() {
@@ -64,5 +64,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   logout() {
     this.store.dispatch(logout());
     this.store.dispatch(closeSidebar());
+  }
+
+  toggleSubMenu(menu: string) {
+    this.isSubMenuOpen[menu] = !this.isSubMenuOpen[menu];
   }
 }

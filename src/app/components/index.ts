@@ -9,7 +9,8 @@ import { WhatsappButtonComponent } from './whatsapp-button/whatsapp-button.compo
 import { CartIconComponent } from './cart-icon/cart-icon.component';
 import { HomeImagesSliderComponent } from './home-images-slider/home-images-slider.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 export const genericComponentsList: any[] = [
-    GradientTitleComponent, GenericButtonComponent, GenericTooltipComponent, SocialLinksComponent, LanguageSwitcherComponent, HomeImagesSliderComponent, GenericParagraphComponent, InfoTooltipComponent, WhatsappButtonComponent, CartIconComponent, DeskThreeComponent
+    GradientTitleComponent, GenericButtonComponent, SpinnerComponent, GenericTooltipComponent, SocialLinksComponent, LanguageSwitcherComponent, HomeImagesSliderComponent, GenericParagraphComponent, InfoTooltipComponent, WhatsappButtonComponent, CartIconComponent, DeskThreeComponent
 ];

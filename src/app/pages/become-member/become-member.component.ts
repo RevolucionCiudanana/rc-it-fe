@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SectorService } from '@services/sector.service';
 import { ProfessionService } from '@services/profession.service';
 import { GeocodingService } from '@services/geocoding.service';
-import { Subscription } from 'rxjs';
+import { debounceTime, filter, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { MemberService } from '@services/member.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-become-member',
@@ -14,7 +15,7 @@ import { MemberService } from '@services/member.service';
 })
 export class BecomeMemberComponent implements OnInit {
   memberForm: FormGroup;
-  currentStep: number =  1;
+  currentStep: number = 1;
   registrationSuccess: boolean = false;
 
   sectors: any;
@@ -30,7 +31,10 @@ export class BecomeMemberComponent implements OnInit {
 
   resultNotFound: boolean = false;
 
-  constructor(private fb: FormBuilder, private geocodingService: GeocodingService, private translate: TranslateService, private sectorService: SectorService, private professionService: ProfessionService, private memberService: MemberService) {
+  loading = false;
+
+
+  constructor(private fb: FormBuilder, private router: Router, private geocodingService: GeocodingService, private translate: TranslateService, private sectorService: SectorService, private professionService: ProfessionService, private memberService: MemberService) {
     this.memberForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -58,6 +62,17 @@ export class BecomeMemberComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadSectors();
+    this.memberForm.get('search_address')?.valueChanges
+      .pipe(
+        debounceTime(1000), // Wait for 3 seconds after the last keystroke
+        filter(value => value.length >= 3) // Only call if input has 3 or more characters
+      )
+      .subscribe(() => {
+        this.loading = true; // Set loading to true
+
+        this.searchAddress();
+      });
+
   }
 
   loadSectors() {
@@ -122,6 +137,7 @@ export class BecomeMemberComponent implements OnInit {
       const subscription = this.geocodingService.findLocation(address).subscribe({
         next: data => {
           this.results = data;
+          this.loading = false; // Hide the spinner when done
           if (this.results.length > 0) {
             this.resultNotFound = false;
           } else {
@@ -198,6 +214,11 @@ export class BecomeMemberComponent implements OnInit {
 
   previousStep() {
     this.currentStep--;
+  }
+
+  goToHome() {
+    this.router.navigate(['/']);  // assuming '/home' is the route to your home page
+
   }
 
   submit() {

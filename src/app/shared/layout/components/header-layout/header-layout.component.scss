@@ -13,6 +13,7 @@ header {
   width: 100%;
   padding: 10px 20px;
   background-color: #ffff;
+
   .logo-wrapper {
     a {
       img {
@@ -38,9 +39,12 @@ header {
 
     .list-menu {
       display: flex;
+
       .item-menu {
+        position: relative; // Set relative position to position the sub-menu
         cursor: pointer;
         margin-right: 20px;
+
         a {
           color: #8c8c8c;
           font-size: 0.7rem;
@@ -48,13 +52,51 @@ header {
           text-transform: uppercase;
           padding: 0.5rem;
           border-radius: 5px;
+
           &:hover {
             background-color: $primary-color;
             color: #fff;
           }
         }
+
         &:last-child {
-          margin-right: 0; /* Remove margin for the last menu item */
+          margin-right: 0; // Remove margin for the last menu item
+        }
+
+        // Sub-menu styles
+        .sub-menu {
+          display: none; // Hide sub-menu by default
+          position: absolute; // Position it below the item-menu
+          top: 100%; // Position it below the item
+          left: 0;
+          background-color: #fff; // Set background color for the sub-menu
+          border: 1px solid #ccc; // Add a border
+          border-radius: 4px; // Rounded corners
+          z-index: 10; // Make sure it appears above other content
+          white-space: nowrap; // Prevent line breaks
+
+          .sub-item {
+            display: inline-block; // Use inline-block to align items horizontally
+            padding: 5px 10px; // Padding for sub-item
+            margin-right: 10px; // Add margin for spacing between sub-items
+            cursor: pointer;
+
+            a {
+              color: #333;
+              text-decoration: none;
+
+              &:hover {
+                background-color: #f2f2f2; // Hover effect for sub-items
+              }
+            }
+          }
+        }
+
+        // Show sub-menu on hover
+        &:hover {
+          .sub-menu {
+            display: block; // Show the sub-menu when hovering over the item-menu
+          }
         }
       }
     }
@@ -69,6 +111,7 @@ header {
     background-color: $primary-color;
     color: #fff;
     border-radius: 5px;
+
     a {
       display: flex;
       align-items: center;
@@ -95,6 +138,7 @@ header {
       border-top: none;
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
       .item-menu {
         display: flex;
         padding: 5px 7px;
@@ -119,7 +163,6 @@ header {
       }
     }
   }
-  
 }
 
 /* Styles for mobile devices */
@@ -127,10 +170,12 @@ header {
   .header-background {
     height: 100%;
     align-items: end;
+
     img {
       width: 100%;
     }
   }
+
   .navbar {
     justify-content: space-between;
 

@@ -1,20 +1,48 @@
-<!-- sidebar.component.html -->
 <div class="sidebar-container">
     <div class="overlay" *ngIf="isOpen" (click)="onClose()"></div>
     <div class="sidebar" [class.active]="isOpen">
         <nav>
-            <a routerLink="/">Home</a>
-            <a routerLink="/become-member">{{ 'MENU_BECOME_MEMBER' | translate }}</a>
-            <a routerLink="/list-member">{{ 'MENU_LIST_MEMBER' | translate }}</a>
-            <a routerLink="/events">{{ 'MENU_EVENTS' | translate }}</a>
-            <a routerLink="/calendar">{{ 'MENU_BECOME_CALENDAR' | translate }}</a>
-            <a routerLink="/organigramma">{{ 'MENU_BECOME_ORGANIGRAM' | translate }}</a>
-            <a routerLink="/contacts">{{ 'MENU_BECOME_CONTACTS' | translate }}</a>
+            <a routerLink="/">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <div class="menu-item" (click)="toggleSubMenu('becomeMember')">
+                <span class="label">
+                    <i class="fas fa-user"></i> {{ 'MENU_MEMBER' | translate }}
+                    <i class="arrow fas" [ngClass]="isSubMenuOpen['becomeMember'] ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </span>
+                <div class="sub-menu" *ngIf="isSubMenuOpen['becomeMember']">
+                    <a routerLink="/become-member">
+                        <i class="fas fa-user-check"></i> {{ 'MENU_BECOME_MEMBER' | translate }}
+                    </a>
+                    <a routerLink="/list-member" *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']">
+                        <i class="fas fa-users"></i> {{ 'MENU_LIST_MEMBER' | translate }}
+                    </a>
+                </div>
+            </div>
+
+            <a routerLink="/events">
+                <i class="fas fa-calendar-alt"></i> {{ 'MENU_EVENTS' | translate }}
+            </a>
+            <a routerLink="/calendar">
+                <i class="fas fa-calendar-check"></i> {{ 'MENU_BECOME_CALENDAR' | translate }}
+            </a>
+            <a routerLink="/organigramma">
+                <i class="fas fa-sitemap"></i> {{ 'MENU_BECOME_ORGANIGRAM' | translate }}
+            </a>
+            <a routerLink="/contacts">
+                <i class="fas fa-address-book"></i> {{ 'MENU_BECOME_CONTACTS' | translate }}
+            </a>
             <hr>
-            <a *ngIf="!isAuthenticated" routerLink="/login">Login</a>
-            <a *ngIf="isAuthenticated" routerLink="/profile">{{ 'MENU_PROFILE' | translate }}</a>
+            <a *ngIf="!isAuthenticated" routerLink="/login">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+            <a *ngIf="isAuthenticated" routerLink="/profile">
+                <i class="fas fa-user-circle"></i> {{ 'MENU_PROFILE' | translate }}
+            </a>
             <hr>
-            <a *ngIf="isAuthenticated" (click)="logout()">Lagout</a>
+            <a *ngIf="isAuthenticated" (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
         </nav>
     </div>
     <button class="menu-button" (click)="onToggle()">&#9776;</button>

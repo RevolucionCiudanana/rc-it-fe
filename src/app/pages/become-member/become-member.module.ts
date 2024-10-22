@@ -5,6 +5,7 @@ import { BecomeMemberComponent } from './become-member.component';
 import { BecomeMemberRoutingModule } from './become-member-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
         CommonModule,
         ReactiveFormsModule,
         TranslateModule,
+        SharedModule,
         BecomeMemberRoutingModule
     ]
 })

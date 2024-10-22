@@ -10,9 +10,11 @@ import { SidebarComponent } from './layout/components/sidebar/sidebar.component'
 import * as ComponentsList from '../components/index';
 import * as ModalsList from '../modals/index';
 import { TranslateModule } from '@ngx-translate/core';
+import { HasRolePipe } from '../pipes/has-role.pipe';
+import { IsAuthenticatedPipe } from '../pipes/is-authenticated.pipe';
 
 @NgModule({
-  declarations: [...ComponentsList.genericComponentsList, ...ModalsList.genericModalsList,
+  declarations: [HasRolePipe,IsAuthenticatedPipe,...ComponentsList.genericComponentsList, ...ModalsList.genericModalsList,
     LayoutComponent, SidebarComponent,HeaderLayoutComponent, FooterLayoutComponent,],
   imports: [
     CommonModule,
