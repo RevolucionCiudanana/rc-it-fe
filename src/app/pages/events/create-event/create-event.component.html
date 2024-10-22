@@ -1,24 +1,5 @@
 <div class="container create-event">
     <div class="row">
-        <div class="step-navigation">
-            <div *ngFor="let step of steps" class="step-wrapper">
-                <a [routerLink]="['/create-event', step.route]" routerLinkActive="active">
-                    <div class="step" [class.active]="isStepActive(step)">
-                        <span>{{ step.name }}</span>
-                    </div>
-                </a>
-                <div *ngIf="isStepActive(step)" class="step-bar"></div>
-            </div>
-            <div class="step-wrapper">
-                <a>
-                    <div class="step">
-                        <span><i class="fa-solid fa-flag-checkered"></i></span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-12 col-md-9">
             <div class="step-container">
                 <router-outlet></router-outlet>
@@ -29,8 +10,8 @@
                 <div class="heading-wrapper">
                     <span class="title">Anteprima evento</span>
                 </div>
-                <div>
-                    <img src="{{event.image}}" />
+                <div class="image-wrapper">
+                    <img src="{{event.imageUrl}}" />
                 </div>
             </div>
         </div>

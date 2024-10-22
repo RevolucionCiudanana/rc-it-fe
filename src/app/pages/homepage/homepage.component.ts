@@ -47,40 +47,5 @@ export class HomepageComponent implements OnInit {
       price: ['200']  // Default value for the price range slider
     });
 
-    this.loadEvents(); // Fetch events initially
-  }
-
-  loadEvents() {
-    // this.eventService.getEvents(this.filterForm.value).subscribe(
-    //   (events: Event[]) => {
-    //     this.filteredEvents = events;
-    //     this.categories = [...new Set(events.map(event => event.category))];
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching events:', error);
-    //     // Handle error
-    //   }
-    // );
-  }
-
-  applyFilters() {
-    this.loadEvents(); // Reload events based on current filters
-  }
-
-  updatePriceDisplay(event: any) {
-    const inputElement = event.target as HTMLInputElement;
-    this.filterForm.patchValue({ price: inputElement.value });
-  }
-
-  openFiltersModal() {
-    this.showFiltersModal = true;
-  }
-
-  closeFiltersModal() {
-    this.showFiltersModal = false;
-  }
-
-  goToEvent(event: Event) {
-    this.router.navigate(['/event', event?.uuid]);
   }
 }

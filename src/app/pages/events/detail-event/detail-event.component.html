@@ -5,7 +5,7 @@
                 <span class="name">{{ event?.title }}</span>
                 <div class="date-wrapper">
                     <i class="fa-regular fa-calendar"></i>
-                    <span>{{ event?.date | date: 'EEEE d MMMM y - HH:mm' }}</span>
+                    <span>{{ event?.startDateTime | date: 'EEEE d MMMM y - HH:mm' }}</span>
                 </div>
                 <div class="location-wrapper">
                     <i class="fa-solid fa-location-dot"></i>
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="preview-image-wrapper card-bg">
-                <img [src]="event?.image" alt="Event Image">
+                <img [src]="event?.imageUrl" alt="Event Image">
             </div>
         </div>
         <div class="col-md-6">

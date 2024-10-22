@@ -25,9 +25,9 @@ export class EventService {
         );
     }
 
-    deleteEventByUUID(uuid: string): Observable<any> {
+    deleteEventById(id: string): Observable<any> {
         return this.http.delete(
-            API_URL + 'deleteEventByUUID/' + uuid,
+            API_URL + 'deleteEventById/' + id,
             httpOptions
         )
     }
