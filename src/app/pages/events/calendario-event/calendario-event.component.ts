@@ -13,6 +13,7 @@ export class CalendarioEventComponent implements OnInit {
   months: moment.Moment[] = [];
   events: { [key: string]: Event[] } = {};
   selectedType: string = '';
+  openMonths: { [key: string]: boolean } = {}; // Per tenere traccia dei mesi aperti
 
   constructor(private eventService: EventService) {
     this.currentMonth = moment();
@@ -32,11 +33,24 @@ export class CalendarioEventComponent implements OnInit {
 
   loadMonths() {
     this.months = [
-      this.currentMonth.clone().add(2, 'months'),
-      this.currentMonth.clone().add(1, 'month'),
+      this.currentMonth.clone().subtract(1, 'month'),
       this.currentMonth.clone(),
-      this.currentMonth.clone().subtract(1, 'month')
+      this.currentMonth.clone().add(1, 'month'),
+      this.currentMonth.clone().add(2, 'months'),
+
     ];
+  }
+
+  // Funzione per aprire/chiudere i mesi
+  toggleMonth(month: moment.Moment) {
+    const monthKey = month.format('MMMM-YYYY');
+    this.openMonths[monthKey] = !this.openMonths[monthKey];
+  }
+
+  // Funzione per sapere se un mese è aperto
+  isMonthOpen(month: moment.Moment): boolean {
+    const monthKey = month.format('MMMM-YYYY');
+    return !!this.openMonths[monthKey];
   }
 
   isCurrentDay(day: moment.Moment): boolean {

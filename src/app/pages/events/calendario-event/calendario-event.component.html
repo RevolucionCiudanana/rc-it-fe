@@ -1,16 +1,17 @@
 <div class="calendario">
     <div *ngFor="let month of months" class="mese">
-        <h2>{{ month.format('MMMM YYYY') | titlecase }}</h2>
-        <div class="giorni">
+        <h2 (click)="toggleMonth(month)">{{ month.format('MMMM YYYY') | titlecase }}<i [ngClass]="{
+              'fa-chevron-up': isMonthOpen(month),
+              'fa-chevron-down': !isMonthOpen(month)
+            }" class="fas"></i></h2>
+        <div class="giorni" *ngIf="isMonthOpen(month)">
             <ng-container *ngFor="let day of getDaysInMonth(month)">
-                <div  class="giorno" [ngClass]="{
-                        'current-day': isCurrentDay(day),
-                        'weekend': day.day() === 0 || day.day() === 6,
-                        'not-valid-day': !day.isValid()
-                    }">
-
+                <div class="giorno" [ngClass]="{
+              'current-day': isCurrentDay(day),
+              'weekend': day.day() === 0 || day.day() === 6,
+              'not-valid-day': !day.isValid()
+          }">
                     <div class="data" *ngIf="day.isValid()">{{ day.format('ddd, D, MMM') | titlecase }}</div>
-
                     <div *ngIf="getEventsForDay(day).length > 0; else noEvents" class="eventi">
                         <div *ngFor="let event of getEventsForDay(day)" class="evento">
                             <div class="titolo">{{ event.title }}</div>

@@ -5,8 +5,15 @@
   padding: 20px; // Padding per il contenitore del calendario
   border-radius: 10px; // Aggiungi angoli arrotondati se desiderato
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Leggero ombreggiatura
-
+  align-items: center;
+  .mese {
+    cursor: pointer;
+    width: fit-content;
+  }
   h2 {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
     color: #003366; // Blu scuro
     text-align: center;
   }
@@ -34,9 +41,9 @@
     &.weekend {
       background-color: #f0f0f0; // Grigio chiaro per il fine settimana
     }
-     &.not-valid-day {
-          opacity: 0;
-        }
+    &.not-valid-day {
+      opacity: 0;
+    }
 
     .data {
       font-weight: bold;
@@ -99,6 +106,9 @@
 
   // Media Queries per la reattività
   @media (max-width: 768px) {
+    .mese {
+      width: 100%;
+    }
     .giorni {
       display: flex;
       flex-direction: column;
@@ -112,6 +122,9 @@
   }
 
   @media (max-width: 480px) {
+    .mese {
+      width: 100%;
+    }
     .giorno {
       flex: 0 0 calc(100% / 7 - 10px); // Mantenere 7 giorni per riga
     }
