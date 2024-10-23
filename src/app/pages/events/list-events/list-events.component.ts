@@ -30,7 +30,7 @@ export class ListEventsComponent implements OnInit {
         private messageService: MessageService,
         private spacesService: SpacesService,
         private eventService: EventService,
-    ) { 
+    ) {
     }
 
     ngOnInit(): void {
@@ -58,7 +58,10 @@ export class ListEventsComponent implements OnInit {
 
 
     getEvents() {
-        this.eventService.getEvents(this.selectedType).subscribe(
+        const filters = {
+            category: this.selectedType
+        }
+        this.eventService.getEvents(filters).subscribe(
             (events: Event[]) => {
                 // Process each event to extract and generate signed URLs
                 this.events = events.map(event => {

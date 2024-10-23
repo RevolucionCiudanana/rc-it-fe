@@ -19,7 +19,7 @@
     <div class="events-container" *ngIf="events.length > 0">
         <div class="event-card" *ngFor="let event of events">
             <h5>{{ event.title }} </h5>
-            <span>{{ event.startDateTime | date:'dd/MM/yyyy HH:mm' }}</span>
+            <span>{{ event.startDateTime | date:'EEEE dd/MM/yyyy HH:mm':'it' | titlecase }}</span>
             <img [src]="event.imageUrl" alt="{{ event.title }}">
             <p>{{ event.shortDescription }}</p>
             <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" (click)="onClickDeleteEvent(event)">{{

@@ -50,7 +50,8 @@ export class EventService {
     }
 
     getEvents(filters: any): Observable<Event[]> {
+
         const params = { ...filters };
-        return this.http.get<Event[]>(API_URL+'getEvents', { params });
+        return this.http.get<Event[]>(API_URL + 'getEvents', { params });
     }
 }

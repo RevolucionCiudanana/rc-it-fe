@@ -66,6 +66,7 @@ header {
         // Sub-menu styles
         .sub-menu {
           display: none; // Hide sub-menu by default
+          flex-direction: column;
           position: absolute; // Position it below the item-menu
           top: 100%; // Position it below the item
           left: 0;
@@ -86,7 +87,8 @@ header {
               text-decoration: none;
 
               &:hover {
-                background-color: #f2f2f2; // Hover effect for sub-items
+                background-color: $primary-color; // Hover effect for sub-items
+                color: #fff;
               }
             }
           }
@@ -95,7 +97,7 @@ header {
         // Show sub-menu on hover
         &:hover {
           .sub-menu {
-            display: block; // Show the sub-menu when hovering over the item-menu
+            display: flex; // Show the sub-menu when hovering over the item-menu
           }
         }
       }
