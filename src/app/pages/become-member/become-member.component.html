@@ -1,6 +1,9 @@
 <div class="become-member">
     <div class="row">
         <div class="col-md-6 p-0">
+            <div class="intro-container text-chillax">
+                {{ 'BECOME_MEMBER_INTRO' | translate }}
+            </div>
             <div class="image-container">
                 <img src="assets/images/gifs/animation-member.gif" alt="Become a Member Animation" />
                 <span class="become-member-title">{{ 'BECOME_MEMBER_TITLE' | translate }}</span>
@@ -32,7 +35,8 @@
                         </div>
                         <div class="buttons-container">
                             <button type="button" (click)="nextStep()"
-                                [disabled]="memberForm.get('name')?.invalid || memberForm.get('surname')?.invalid || memberForm.get('birthdate')?.invalid|| memberForm.get('email')?.invalid || memberForm.get('cellphone')?.invalid">{{ 'BUTTONS_NEXT' | translate }}</button>
+                                [disabled]="memberForm.get('name')?.invalid || memberForm.get('surname')?.invalid || memberForm.get('birthdate')?.invalid|| memberForm.get('email')?.invalid || memberForm.get('cellphone')?.invalid">{{
+                                'BUTTONS_NEXT' | translate }}</button>
                         </div>
                     </form>
                 </div>
@@ -103,7 +107,8 @@
                         <div class="buttons-container">
                             <button type="button" (click)="previousStep()">{{ 'BUTTONS_BACK' | translate }}</button>
                             <button type="button" (click)="nextStep()"
-                                [disabled]="memberForm.get('address')?.invalid">{{ 'BUTTONS_NEXT' | translate }}</button>
+                                [disabled]="memberForm.get('address')?.invalid">{{ 'BUTTONS_NEXT' | translate
+                                }}</button>
                         </div>
 
                     </form>
@@ -131,18 +136,20 @@
                         <div class="buttons-container">
                             <button type="button" (click)="previousStep()">{{ 'BUTTONS_BACK' | translate }}</button>
                             <button type="button" (click)="submit()"
-                                [disabled]="memberForm.get('sectorId')?.invalid || memberForm.get('professionId')?.invalid">{{ 'BUTTONS_SEND' | translate }}</button>
+                                [disabled]="memberForm.get('sectorId')?.invalid || memberForm.get('professionId')?.invalid">{{
+                                'BUTTONS_SEND' | translate }}</button>
                         </div>
 
                     </form>
                 </div>
                 <div class="step" [ngClass]="{'active': currentStep === 4}">
-                    
+
                     <h3>{{ 'FORM_FIELD_SUCCESS_TITLE' | translate }}</h3>
                     <p>{{ 'FORM_FIELD_SUCCESS_MESSAGE' | translate }}</p>
                     <img src="">
                     <button type="button"
-                        (click)="currentStep = 1; memberForm.reset(); registrationSuccess = false; goToHome();">{{ 'BUTTONS_GO_HOME' | translate }}</button>
+                        (click)="currentStep = 1; memberForm.reset(); registrationSuccess = false; goToHome();">{{
+                        'BUTTONS_GO_HOME' | translate }}</button>
                 </div>
             </div>
 

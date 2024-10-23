@@ -1,8 +1,13 @@
 @import "../../../assets/scss/colors.scss";
 
 .become-member {
-  margin: 20px;
   font-family: Arial, sans-serif;
+  padding: 1rem;
+  background-color: #46a2db;
+  .intro-container {
+    padding: 1.55rem 2rem;
+    color: #fff;
+  }
 
   .card {
     padding: 1rem;
@@ -18,15 +23,15 @@
         display: block; // Mostra il passo attivo
       }
       button {
-            padding: 12px;
-            background-color: #1999d5; // Primary color
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-          }
+        padding: 12px;
+        background-color: #1999d5; // Primary color
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
     }
 
     h3 {
