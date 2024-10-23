@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-language-switcher',
@@ -20,6 +21,7 @@ export class LanguageSwitcherComponent implements OnInit {
     // Set the default language from local storage if available
     const savedLanguage = localStorage.getItem('selectedLanguage');
     this.currentLanguage = savedLanguage ? savedLanguage : this.currentLanguage; // Use saved language or default
+    moment.locale(savedLanguage || 'it'); // Default to Italian if no language saved
     translate.setDefaultLang(this.currentLanguage);
     translate.use(this.currentLanguage);
   }

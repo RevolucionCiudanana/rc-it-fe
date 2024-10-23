@@ -33,11 +33,9 @@ export class CalendarioEventComponent implements OnInit {
 
   loadMonths() {
     this.months = [
-      this.currentMonth.clone().subtract(1, 'month'),
       this.currentMonth.clone(),
       this.currentMonth.clone().add(1, 'month'),
       this.currentMonth.clone().add(2, 'months'),
-
     ];
   }
 
