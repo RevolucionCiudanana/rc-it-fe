@@ -19,13 +19,24 @@
                     </a>
                 </div>
             </div>
+            <div class="menu-item" (click)="toggleSubMenu('events')">
+                <span class="label">
+                    <i class="fas fa-calendar-alt"></i> {{ 'MENU_EVENTS' | translate }}
+                    <i class="arrow fas" [ngClass]="isSubMenuOpen['events'] ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </span>
+                <div class="sub-menu" *ngIf="isSubMenuOpen['events']">
+                    <a routerLink="/events">
+                        <i class="fas fa-list-alt"></i> {{ 'MENU_LIST_EVENTS' | translate }}
+                    </a>
+                    <a routerLink="/create-event" *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']">
+                        <i class="fas fa-plus-circle"></i> {{ 'MENU_CREATE_EVENTS' | translate }}
+                    </a>
+                    <a routerLink="/calendar-events">
+                        <i class="fas fa-calendar"></i> {{ 'MENU_CALENDAR_EVENTS' | translate }}
+                    </a>
+                </div>
+            </div>
 
-            <a routerLink="/events">
-                <i class="fas fa-calendar-alt"></i> {{ 'MENU_EVENTS' | translate }}
-            </a>
-            <a routerLink="/calendar">
-                <i class="fas fa-calendar-check"></i> {{ 'MENU_BECOME_CALENDAR' | translate }}
-            </a>
             <a routerLink="/organigramma">
                 <i class="fas fa-sitemap"></i> {{ 'MENU_BECOME_ORGANIGRAM' | translate }}
             </a>

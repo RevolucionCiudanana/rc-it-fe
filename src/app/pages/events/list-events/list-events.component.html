@@ -1,19 +1,19 @@
 <div class="container lista-events">
     <div class="actions-wrapper">
         <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" class='action' type="button" (click)="goToPageCreateEvent()">
-            <i class="fa-solid fa-plus"></i>Crea evento
+            <i class="fa-solid fa-plus"></i>{{ 'MENU_CREATE_EVENTS' | translate }}
         </button>
     </div>
     <div class="filters">
-        <h5>Filtri</h5>
-        <label for="type">Tipologia:</label>
+        <h5>{{ 'EVENTS_FILTERS' | translate }}</h5>
+        <label for="type">{{ 'EVENTS_FILTER_CATEGORY' | translate }}:</label>
         <select id="type" [(ngModel)]="selectedType" (change)="applyFilters()">
             <option value="">Tutte</option>
             <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
         </select>
     </div>
     <div class="empty-message-wrapper" *ngIf="events.length == 0">
-        <span>Non ci sono eventi</span>
+        <span>{{ 'EVENTS_NO_ELEMENTS' | translate }}</span>
     </div>
     <div class="events-container" *ngIf="events.length > 0">
         <div class="event-card" *ngFor="let event of events">
@@ -21,7 +21,7 @@
             <span>{{ event.startDateTime | date:'dd/MM/yyyy' }}</span>
             <img [src]="event.imageUrl" alt="{{ event.title }}">
             <p>{{ event.shortDescription }}</p>
-            <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" (click)="onClickDeleteEvent(event)">Elimina</button>
+            <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" (click)="onClickDeleteEvent(event)">{{ 'EVENTS_DELETE' | translate }}</button>
         </div>
     </div>
    

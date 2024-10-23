@@ -1,0 +1,16 @@
+<div class="calendario">
+    <div *ngFor="let month of months">
+        <h2>{{ month.format('MMMM YYYY') }}</h2>
+        <div class="giorni">
+            <div *ngFor="let day of getDaysInMonth(month)" class="giorno">
+                <div class="data">{{ day.format('MMM, D') }}</div>
+                <div *ngFor="let event of getEventsForDay(day)" class="evento">
+                    <div class="titolo">{{ event.title }}</div>
+                    <div class="organizzatore">{{ event.organizer }}</div>
+                    <div class="orario">{{ event.time }}</div>
+                    <a [href]="event.registrationLink" class="registrati">REGÍSTRATE AHORA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

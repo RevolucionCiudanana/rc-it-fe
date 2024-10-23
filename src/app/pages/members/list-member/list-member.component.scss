@@ -1,4 +1,5 @@
 .list-member-container {
+  overflow-y: scroll;
   h2 {
     color: #1999d5;
     margin-bottom: 20px;
@@ -11,17 +12,18 @@
     border-collapse: collapse;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 
-    th, td {
+    th,
+    td {
       padding: 12px 15px;
       border: 1px solid #ddd;
       text-align: left;
     }
 
     th {
-      background-color: #1999d5;  /* Blue header background */
-      color: white;               /* White text for the headers */
-      font-weight: bold;
-      text-transform: uppercase;
+      background-color: #1999d5; /* Blue header background */
+      color: hsl(0, 0%, 100%); /* White text for the headers */
+    //   font-weight: bold;
+    //   text-transform: uppercase;
       letter-spacing: 0.03em;
       font-size: 14px;
     }
@@ -29,11 +31,11 @@
     td {
       font-size: 14px;
       color: #333;
-      background-color: #f9f9f9;  /* Light background for rows */
+      background-color: #f9f9f9; /* Light background for rows */
     }
 
     tr:nth-child(even) td {
-      background-color: #f1f1f1;  /* Alternate row coloring */
+      background-color: #f1f1f1; /* Alternate row coloring */
     }
 
     /* Filter input styles */
@@ -48,13 +50,13 @@
 
     /* Input focus styles */
     th input:focus {
-      border: 2px solid #007bbd;  /* Slightly darker blue on focus */
+      border: 2px solid #007bbd; /* Slightly darker blue on focus */
       outline: none;
     }
 
     /* Table hover effect */
     tbody tr:hover {
-      background-color: #e0f2ff;  /* Light blue on row hover */
+      background-color: #e0f2ff; /* Light blue on row hover */
       cursor: pointer;
     }
   }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule qui
 import { ListEventsComponent } from './list-events.component';
 import { ListEventsRoutingModule } from './list-events-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     imports: [
         CommonModule,
         FormsModule,
+        TranslateModule,
         SharedModule,
         ListEventsRoutingModule,
     ],

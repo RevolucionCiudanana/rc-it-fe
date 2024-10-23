@@ -14,6 +14,10 @@ import { AuthGuard } from 'src/app/guard/auth.guard';
     {
       path: 'event/:uuid', loadChildren: () => import('./detail-event/detail-event.module').then(m => m.DetailEventModule),
     },
+    {
+      path: 'calendar-events', loadChildren: () => import('./calendario-event/calendario-event.module').then(m => m.CalendarioEventModule),
+
+    },
   ])], exports: [RouterModule]
 })
 export class EventsRoutingModule { }

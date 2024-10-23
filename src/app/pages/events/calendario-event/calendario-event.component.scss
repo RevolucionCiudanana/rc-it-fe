@@ -1,0 +1,73 @@
+.calendario {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    color: #003366; // Blu scuro
+    text-align: center;
+  }
+
+  .giorni {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .giorno {
+    width: 14.28%; // 7 giorni
+    padding: 10px;
+    text-align: center;
+    margin: 5px;
+    position: relative;
+
+    .data {
+      font-weight: bold;
+      color: #003366; // Blu scuro
+      font-size: 16px;
+    }
+
+    .evento {
+      background-color: #e6f0ff; // Blu chiaro
+      border: 1px solid #003366; // Blu scuro
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .titolo {
+        font-size: 14px;
+        font-weight: bold;
+        color: #0056b3; // Blu medio
+      }
+
+      .organizzatore {
+        font-size: 12px;
+        color: #666;
+      }
+
+      .orario {
+        font-size: 12px;
+      }
+
+      .registrati {
+        display: inline-block;
+        margin-top: 5px;
+        color: #007bff; // Blu chiaro
+        text-decoration: none;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        padding: 5px 10px;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #007bff; // Blu al passaggio del mouse
+          color: white;
+        }
+      }
+    }
+  }
+}

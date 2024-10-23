@@ -46,13 +46,6 @@ const routes: Routes = [
             './pages/members/members.module'
           ).then((m) => m.MembersModule),
       },
-      {
-        path: '',
-        loadChildren: () =>
-          import(
-            './pages/calendario/calendario.module'
-          ).then((m) => m.CalendarioModule),
-      },
 
       {
         path: '',
