@@ -34,6 +34,9 @@
     &.weekend {
       background-color: #f0f0f0; // Grigio chiaro per il fine settimana
     }
+     &.not-valid-day {
+          opacity: 0;
+        }
 
     .data {
       font-weight: bold;
