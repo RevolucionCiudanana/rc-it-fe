@@ -40,11 +40,11 @@
       padding: 0.2rem 1rem;
     }
   }
+
   .social-media-container {
     display: flex;
     justify-content: space-evenly;
     background-color: #121c4b;
-    border-radius: 10px;
     position: relative;
     overflow: hidden;
     .gif-animation {
@@ -153,6 +153,35 @@
       }
     }
   }
+  .btn-become-member-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    button {
+      background-color: #df4747;
+      color: #fff;
+      font-family: "GothamUltra";
+      font-size: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background-color: #c13b3b;
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        background-color: #a12f2f;
+        transform: translateY(0);
+        box-shadow: none;
+      }
+    }
+  }
 }
 
 .pointer {
@@ -173,7 +202,7 @@
 }
 
 .pointer-2 {
- top: 24%; /* Milano*/
+  top: 24%; /* Milano*/
   left: 35%;
 }
 
