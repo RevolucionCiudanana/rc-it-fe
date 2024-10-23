@@ -1,16 +1,29 @@
 <div class="calendario">
-    <div *ngFor="let month of months">
-        <h2>{{ month.format('MMMM YYYY') }}</h2>
+    <div *ngFor="let month of months" class="mese">
+        <h2>{{ month.format('MMMM YYYY') | titlecase }}</h2>
         <div class="giorni">
-            <div *ngFor="let day of getDaysInMonth(month)" class="giorno">
-                <div class="data">{{ day.format('MMM, D') }}</div>
-                <div *ngFor="let event of getEventsForDay(day)" class="evento">
-                    <div class="titolo">{{ event.title }}</div>
-                    <div class="organizzatore">{{ event.organizer }}</div>
-                    <div class="orario">{{ event.time }}</div>
-                    <a [href]="event.registrationLink" class="registrati">REGÍSTRATE AHORA</a>
+            <ng-container *ngFor="let day of getDaysInMonth(month)">
+                <div  class="giorno" [ngClass]="{
+                        'current-day': isCurrentDay(day),
+                        'weekend': day.day() === 0 || day.day() === 6,
+                        'not-valid-day': !day.isValid()
+                    }">
+
+                    <div class="data" *ngIf="day.isValid()">{{ day.format('ddd, D, MMM') | titlecase }}</div>
+
+                    <div *ngIf="getEventsForDay(day).length > 0; else noEvents" class="eventi">
+                        <div *ngFor="let event of getEventsForDay(day)" class="evento">
+                            <div class="titolo">{{ event.title }}</div>
+                            <div class="organizzatore">{{ event.organizer }}</div>
+                            <div class="orario">{{ event.startDateTime | date: 'shortTime' }} - {{ event.endDateTime |
+                                date: 'shortTime' }}</div>
+                        </div>
+                    </div>
+                    <ng-template #noEvents>
+                        <div class="no-eventi" *ngIf="day.isValid()">Nessun evento</div>
+                    </ng-template>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>

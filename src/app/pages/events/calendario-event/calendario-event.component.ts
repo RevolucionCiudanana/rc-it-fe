@@ -1,90 +1,99 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { Event } from '../../../models/event';
+import { EventService } from '../../../services/event.service'; // Adjust the import path accordingly
 
 @Component({
   selector: 'app-calendario-event',
   templateUrl: './calendario-event.component.html',
-  styleUrls: ['./calendario-event.component.scss'] // Cambiato in SCSS
+  styleUrls: ['./calendario-event.component.scss']
 })
 export class CalendarioEventComponent implements OnInit {
   currentMonth: moment.Moment;
   months: moment.Moment[] = [];
-  events: { [key: string]: { title: string; organizer: string; time: string; registrationLink: string }[] } = {};
+  events: { [key: string]: Event[] } = {};
+  selectedType: string = '';
 
-  constructor() {
+  constructor(private eventService: EventService) {
     this.currentMonth = moment();
-    this.events = {
-      '2024-03-04': [{
-        title: 'Cómo Romper el Hábito de la Auto-Duda y Construir Confianza Real',
-        organizer: 'Benedikt Safiyulin',
-        time: '02:20 - 04:20',
-        registrationLink: '#'
-      }],
-      '2024-03-14': [{
-        title: 'Domina Tus Habilidades Interpersonales',
-        organizer: 'Beth Murphy',
-        time: '02:20 - 04:20',
-        registrationLink: '#'
-      }],
-      '2024-10-02': [{
-        title: 'Entra en tu Flujo Creativo',
-        organizer: 'Deveeprasad Acharya',
-        time: '14:00 - 16:00',
-        registrationLink: '#'
-      }],
-      '2024-10-03': [{
-        title: 'Haz Realidad Tu Viaje de Sueños',
-        organizer: 'Dontae Little',
-        time: '14:00 - 16:00',
-        registrationLink: '#'
-      }],
-      '2024-10-05': [{
-        title: 'Cómo Jubilarse Temprano: El Factor Latte',
-        organizer: 'Chloé Modibo',
-        time: '14:00 - 16:00',
-        registrationLink: '#'
-      }],
-      '2024-10-07': [{
-        title: 'El Poder del Lenguaje Corporal',
-        organizer: 'Jioke Ugoorji',
-        time: '14:00 - 16:00',
-        registrationLink: '#'
-      }],
-      '2024-10-08': [{
-        title: 'Cómo los Multimillonarios, Íconos y Performers de Clase Mundial Dominan la Productividad',
-        organizer: 'Ren Xue',
-        time: '14:00 - 16:00',
-        registrationLink: '#'
-      }],
-    };
   }
 
   ngOnInit(): void {
     this.loadMonths();
+    this.getEvents();
+    this.setLanguage();
+  }
+
+  setLanguage() {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'it';
+    moment.locale(savedLanguage || 'it'); // Default to Italian if no language saved
+    this.selectedType = savedLanguage || 'it'; // Set to default if not found
   }
 
   loadMonths() {
     this.months = [
-      this.currentMonth.clone().add(1, 'month'), // Mese successivo
-      this.currentMonth.clone(),                   // Mese corrente
-      this.currentMonth.clone().subtract(1, 'month') // Mese precedente
+      this.currentMonth.clone().add(2, 'months'),
+      this.currentMonth.clone().add(1, 'month'),
+      this.currentMonth.clone(),
+      this.currentMonth.clone().subtract(1, 'month')
     ];
+  }
+
+  isCurrentDay(day: moment.Moment): boolean {
+    return day.isSame(moment(), 'day'); // Check if the day is today
+  }
+
+  getEvents() {
+    const filters = { category: this.selectedType };
+
+    this.eventService.getEvents(filters).subscribe(
+      (events: Event[]) => {
+        this.events = events.reduce((acc: { [key: string]: Event[] }, event) => {
+          const dateKey = moment(event.startDateTime).format('YYYY-MM-DD');
+
+          if (!acc[dateKey]) {
+            acc[dateKey] = [];
+          }
+          acc[dateKey].push(event);
+          return acc;
+        }, {});
+      },
+      (error) => {
+        console.error('Error fetching events:', error);
+      }
+    );
   }
 
   getDaysInMonth(month: moment.Moment) {
     const start = month.clone().startOf('month');
     const end = month.clone().endOf('month');
-    const days = [];
+    const days: moment.Moment[] = [];
 
-    for (let day = start; day.isBefore(end, 'day'); day.add(1, 'day')) {
-      days.push(day.clone());
+    // Calcola il numero di giorni vuoti fino al lunedì
+    const startDay = start.day(); // Ottieni il giorno della settimana del primo giorno del mese
+    const daysToAdd = startDay === 0 ? 6 : startDay - 1; // Se è Domenica, aggiungi 6 giorni, altrimenti aggiungi startDay - 1
+
+    // Aggiungi giorni vuoti all'inizio per allineare il primo giorno della settimana (Lun)
+    for (let i = 0; i < daysToAdd; i++) {
+      days.push(moment(null)); // Aggiungi spazi vuoti come moment nullo
+    }
+
+    for (let day = start; day.isBefore(end.clone().add(1, 'day'), 'day'); day.add(1, 'day')) {
+      if (day.isValid()) {
+        days.push(day.clone());
+      }
     }
 
     return days;
   }
 
+
   getEventsForDay(day: moment.Moment) {
     const dateKey = day.format('YYYY-MM-DD');
     return this.events[dateKey] || [];
+  }
+
+  getFileUrl(keyFile: string): string {
+    return `https://your-storage-url.com/${keyFile}`; // Adjust this logic as needed
   }
 }

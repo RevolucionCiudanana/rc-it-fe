@@ -1,6 +1,10 @@
 .calendario {
   display: flex;
   flex-direction: column;
+  background-color: white; // Colore di sfondo bianco
+  padding: 20px; // Padding per il contenitore del calendario
+  border-radius: 10px; // Aggiungi angoli arrotondati se desiderato
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Leggero ombreggiatura
 
   h2 {
     color: #003366; // Blu scuro
@@ -13,11 +17,23 @@
   }
 
   .giorno {
-    width: 14.28%; // 7 giorni
+    flex: 0 0 calc(100% / 7 - 10px); // 7 giorni per riga, sottraendo il margine
     padding: 10px;
     text-align: center;
     margin: 5px;
     position: relative;
+    aspect-ratio: 1; // Rende gli elementi quadrati
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; // Centra il contenuto
+    border: 1px solid #ccc; // Bordo grigio chiaro
+    border-radius: 5px; // Angoli arrotondati
+    background-color: white; // Sfondo bianco
+
+    &.weekend {
+      background-color: #f0f0f0; // Grigio chiaro per il fine settimana
+    }
 
     .data {
       font-weight: bold;
@@ -68,6 +84,37 @@
           color: white;
         }
       }
+    }
+  }
+
+  // Evidenziazione per il giorno corrente
+  .current-day {
+    background-color: #ffeb3b; // Colore di evidenziazione (giallo)
+    border: 2px solid #fbc02d; // Bordo giallo scuro
+    border-radius: 5px;
+  }
+
+  // Media Queries per la reattività
+  @media (max-width: 768px) {
+    .giorni {
+      display: flex;
+      flex-direction: column;
+      .giorno {
+        flex: 0 0 calc(100% / 7 - 10px); // Mantenere 7 giorni per riga
+        &.not-valid-day {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .giorno {
+      flex: 0 0 calc(100% / 7 - 10px); // Mantenere 7 giorni per riga
+    }
+
+    .giorni {
+      justify-content: center; // Centra gli elementi su schermi piccoli
     }
   }
 }
