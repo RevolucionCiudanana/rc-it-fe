@@ -1,6 +1,55 @@
 @import "../../../assets/scss/colors.scss";
 
 .homepage {
+  .image-gallery {
+    text-align: center; // Center-align the gallery title
+    padding: 20px; // Add padding around the gallery
+    background-color: #f9f9f9; // Light background for contrast
+    border-radius: 10px; // Rounded corners for the gallery
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); // Soft shadow for depth
+
+    h2 {
+      font-size: 24px; // Font size for the title
+      color: #333; // Dark color for the title
+      margin-bottom: 15px; // Space below the title
+    }
+
+    .image-container {
+      display: flex; // Use flexbox for layout
+      justify-content: center; // Center images in the container
+      align-items: center; // Vertically align images
+      gap: 15px; // Space between images
+      margin-top: 20px; // Space above the images
+
+      // Responsive design for smaller screens
+      @media (max-width: 768px) {
+        flex-direction: column; // Stack images vertically on smaller screens
+        gap: 10px; // Reduce gap between images
+      }
+
+      .gallery-image {
+        width: calc(
+          33.33% - 10px
+        ); // Set width to one-third of the container minus space for margin
+
+        height: auto; // Maintain aspect ratio
+        border-radius: 8px; // Round the corners of the images
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Add a slight shadow for depth
+        transition: transform 0.3s; // Smooth transition for hover effect
+
+        // Hover effect
+        &:hover {
+          transform: scale(1.05); // Slightly enlarge the image on hover
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); // Enhance shadow on hover
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
   .hero-container {
     img {
       width: 100%;

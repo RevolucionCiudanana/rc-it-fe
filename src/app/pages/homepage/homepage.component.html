@@ -1,10 +1,11 @@
 <div class="homepage container-fluid">
+
   <div class="row">
     <div class="col-12 p-0">
-      <app-home-images-slider [imageNames]="imageUrls"></app-home-images-slider>
+
+
     </div>
   </div>
-
   <div class="row" style="background-color: #46A2DB;">
     <div class="col-md-5 p-0">
       <div class="images-home-container">
@@ -33,7 +34,17 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12 p-0">
+      <!-- <app-home-images-slider [sliderImages]="sliderImages"></app-home-images-slider> -->
+      <div class="image-gallery">
+        <div class="image-container">
+          <img *ngFor="let image of sliderImages" [src]="image" alt="Event Image" class="gallery-image" />
+        </div>
+      </div>
 
+    </div>
+  </div>
   <div class="row">
     <div class="col-12 p-0">
       <div class="social-media-container">

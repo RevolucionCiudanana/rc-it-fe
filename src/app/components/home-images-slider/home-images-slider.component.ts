@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home-images-slider',
@@ -6,26 +6,29 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./home-images-slider.component.scss']
 })
 export class HomeImagesSliderComponent implements OnInit, OnDestroy {
-  @Input() imageNames: string[] = [];
+  @Input() sliderImages: string[] = [];
   currentIndex = 0;
-  private intervalId: any; // To hold the interval ID
+  isMobileView = false;
+  private intervalId: any;
 
   ngOnInit(): void {
-    if (this.imageNames.length === 0) {
-      throw new Error('No images provided');
-    }
+    this.detectScreenSize();
     this.startImageRotation();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.detectScreenSize();
+  }
+
   ngOnDestroy(): void {
-    // Clean up interval when the component is destroyed
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
   }
 
   get images(): string[] {
-    return this.imageNames.map(name => `${name}`);
+    return this.isMobileView ? this.sliderImages : this.sliderImages;
   }
 
   next(): void {
@@ -40,5 +43,10 @@ export class HomeImagesSliderComponent implements OnInit, OnDestroy {
     this.intervalId = setInterval(() => {
       this.next();
     }, 3000); // Change image every 3 seconds
+  }
+
+  private detectScreenSize(): void {
+    // Set mobile view to true if window width is 768px or below
+    this.isMobileView = window.innerWidth <= 768;
   }
 }
