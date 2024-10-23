@@ -1,126 +1,92 @@
 @import "../../../../assets/scss/colors.scss";
 
 .create-event {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  background-color: white;
-  .step-navigation {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 1rem 0;
-    .step-wrapper {
-      display: flex;
-      align-items: center;
-      flex: 1;
-      a {
-        text-decoration: none;
-
-        .step {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 30px;
-          height: 30px;
-          background-color: rgb(84 82 82 / 24%);
-          color: #f5f6f7;
-          border-radius: 50%;
-          border: 2px solid #f5f6f7;
-          &.active {
-            background-color: $primary-color;
-            color: #fff;
-
-            span {
-              font-size: 0.8rem;
-            }
-          }
-
-          span {
-            font-size: 0.6rem;
-          }
-        }
-      }
-
-      .step-bar {
-        width: 50px;
-        height: 2px;
-        background-color: $primary-color;
-        flex: 1;
-      }
-    }
-  }
-
-  .step-container {
-    height: 100%;
-    padding: 1rem;
-
-    @media only screen and (max-width: 767px) {
-      padding: 0rem;
-    }
-  }
-  .panel-preview-container {
-    border-radius: 10px;
-    margin: 20px auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    .heading-wrapper {
-      .title {
-        display: block;
-        font-size: 1rem;
-        padding: 0.3rem;
-      }
-      i {
-        display: none;
-      }
-    }
-    .image-wrapper {
-      img {
-        width: 100%;
-      }
-    }
-    @media only screen and (max-width: 767px) {
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      margin: 0;
-      background-color: rgb(73 73 73);
-      z-index: 4;
-      .pricing-wrapper.collapsed {
-        display: none;
-      }
-      .heading-wrapper {
-        display: flex;
-        align-items: center;
-        i {
-          display: block;
-          margin-left: auto;
-        }
-      }
+    
+    .step-container {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .pricing-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      .price {
-        display: flex;
-        align-items: center;
-        font-size: 0.8rem;
-        gap: 6px;
-        .value {
-          margin-left: auto;
-        }
-      }
-    }
-    .total-wrapper {
-      display: flex;
-      gap: 5px;
-      .value {
-        margin-left: auto;
+    legend {
         font-size: 1.5rem;
-      }
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
     }
-  }
+
+    .fieldset-container {
+        margin-bottom: 20px;
+    }
+
+    fieldset {
+        border: none;
+        margin-bottom: 20px;
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        small {
+            font-size: 0.875rem;
+            color: #777;
+        }
+    }
+
+    .row {
+        margin-bottom: 20px;
+
+        .col-md-6 {
+            padding: 10px;
+
+            @media (max-width: 768px) {
+                padding: 0;
+            }
+        }
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+
+            &:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+
+            &:hover:not(:disabled) {
+                background-color: #0056b3;
+            }
+        }
+    }
 }
+

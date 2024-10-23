@@ -1,68 +1,70 @@
 <div class="container create-event">
     <div class="row">
-        <div class="col-12 col-md-9">
+        <div class="col-12">
             <div class="step-container">
-            <form [formGroup]="createEventForm">
-                <legend>Inserisci dettagli evento</legend>
-                <div class="fieldset-container">
-                    <fieldset>
-                        <label for="title">Titolo evento:</label>
-                        <input id="title" type="text" formControlName="title" placeholder="Titolo dell'evento">
-                    </fieldset>
-                    <fieldset>
-                        <label for="shortDescription">Descrizione breve:</label>
-                        <textarea id="shortDescription" formControlName="shortDescription" rows="4" maxlength="200"
-                            placeholder="Descrivi brevemente l'evento" (input)="updateCharacterCount()"></textarea>
-                        <div>
-                            <small>{{ characterCount }}/200 caratteri</small>
+                <form [formGroup]="createEventForm">
+                    <legend>Inserisci dettagli evento</legend>
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <fieldset>
+                                <label for="title">Titolo evento:</label>
+                                <input id="title" type="text" formControlName="title" placeholder="Titolo dell'evento">
+                            </fieldset>
+                            <fieldset>
+                                <label for="shortDescription">Descrizione breve:</label>
+                                <textarea id="shortDescription" formControlName="shortDescription" rows="4"
+                                    maxlength="200" placeholder="Descrivi brevemente l'evento"
+                                    (input)="updateCharacterCount()"></textarea>
+                                <div>
+                                    <small>{{ characterCount }}/200 caratteri</small>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <label for="location">Luogo evento:</label>
+                                <input id="location" type="text" formControlName="location"
+                                    placeholder="Indirizzo dell'evento">
+                            </fieldset>
+                            <fieldset>
+                                <label for="category">Categoria evento:</label>
+                                <select id="category" formControlName="category">
+                                    <option value="political">Politico</option>
+                                    <option value="concert">Concerto</option>
+                                    <option value="standup">Standup</option>
+                                    <option value="musical">Musical</option>
+                                    <option value="theater">Teatro</option>
+                                </select>
+                            </fieldset>
                         </div>
-                    </fieldset>
-                    <fieldset>
-                        <label for="location">Luogo evento:</label>
-                        <input id="location" type="text" formControlName="location" placeholder="Indirizzo dell'evento">
-                    </fieldset>
-                    <fieldset>
-                        <label for="startDateTime">Data e ora di inizio:</label>
-                        <input id="startDateTime" type="datetime-local" formControlName="startDateTime">
-                    </fieldset>
-                    <fieldset>
-                        <label for="endDateTime">Data e ora di fine:</label>
-                        <input id="endDateTime" type="datetime-local" formControlName="endDateTime">
-                    </fieldset>
-                    <fieldset>
-                        <label for="category">Categoria evento:</label>
-                        <select id="category" formControlName="category">
-                            <option value="political">Politico</option>
-                            <option value="concert">Concerto</option>
-                            <option value="standup">Standup</option>
-                            <option value="musical">Musical</option>
-                            <option value="theater">Teatro</option>
-                        </select>
-                    </fieldset>
-                    <fieldset>
-                        <label for="contactInfo">Informazioni di contatto:</label>
-                        <input id="contactInfo" type="text" formControlName="contactInfo" placeholder="E-mail o numero di telefono">
-                    </fieldset>
-                    <fieldset>
-                        <label for="imageUrl">URL immagine:</label>
-                        <input type="url" id="imageUrl" formControlName="imageUrl" placeholder="http://example.com/immagine.jpg">
-                    </fieldset>
-                </div>
-                <div class="button-container">
-                    <button class="btn-primary" type="button" [disabled]="!createEventForm.valid" (click)="saveEvent()">Crea
-                        evento</button>
-                </div>
-            </form>
-            </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="panel-preview-container">
-                <div class="heading-wrapper">
-                    <span class="title">Anteprima evento</span>
-                </div>
-                <div class="image-wrapper">
-                    <img src="{{event.imageUrl}}" />
-                </div>
+                        <!-- Right Column -->
+                        <div class="col-md-6">
+                            <fieldset>
+                                <label for="startDateTime">Data e ora di inizio:</label>
+                                <input id="startDateTime" type="datetime-local" formControlName="startDateTime">
+                            </fieldset>
+                            <fieldset>
+                                <label for="endDateTime">Data e ora di fine:</label>
+                                <input id="endDateTime" type="datetime-local" formControlName="endDateTime">
+                            </fieldset>
+                            <fieldset>
+                                <label for="contactInfo">Informazioni di contatto:</label>
+                                <input id="contactInfo" type="text" formControlName="contactInfo"
+                                    placeholder="E-mail o numero di telefono">
+                            </fieldset>
+                            <fieldset>
+                                <label for="documents">Carica documenti:</label>
+                                <input type="file" id="documents" (change)="onDocumentChange($event)"
+                                    accept=".pdf, .doc, .docx, image/*" multiple>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button class="btn-primary" type="button" [disabled]="!createEventForm.valid"
+                            (click)="saveEvent()">Crea
+                            evento</button>
+                    </div>
+                </form>
+                {{this.createEventForm.value | json}}
             </div>
         </div>
     </div>

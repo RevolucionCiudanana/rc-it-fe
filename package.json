@@ -26,6 +26,7 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "@stripe/stripe-js": "^4.0.0",
     "@types/three": "^0.164.0",
+    "aws-sdk": "^2.1691.0",
     "bootstrap": "^5.3.3",
     "gojs": "^3.0.11",
     "leaflet": "^1.9.4",

@@ -4,10 +4,11 @@ import { Store } from '@ngrx/store';
 import { EventPricingService } from '@services/eventPricing.service';
 import { Event } from '@models/event';
 import { filter } from 'rxjs/operators';
-import { Step } from 'src/app/models/step'; // Assuming you have a Step model defined
+import { Step } from 'src/app/models/step';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EventService } from '@services/event.service';
 import { ToastrService } from 'ngx-toastr';
+import { UploadService } from '@services/upload.service';
 
 @Component({
   selector: 'app-create-event',
@@ -15,33 +16,25 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent implements OnInit {
-  steps: Step[] = [{ name: '1', route: 'step-1', index: 1 }, { name: '2', route: 'step-2', index: 2 }, { name: '3', route: 'step-3', index: 3 }];
-  currentStep!: string;
-  previewItems: any;
-  event!: Event;
-  isCollapsed: boolean = true;
+  // Other properties...
   createEventForm!: FormGroup;
   characterCount: number = 0;
-
+  selectedFile!: File | null;
+  uploadedFiles: File[] = []; // Array to hold uploaded documents
 
   constructor(
     private router: Router,
     private store: Store<any>,
     private formBuilder: FormBuilder,
     private eventService: EventService,
+    private uploadService: UploadService,
     private toastr: ToastrService,
     private eventPricingService: EventPricingService
   ) {
-    this.initializeCurrentStep();
   }
 
   ngOnInit() {
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.initializeCurrentStep();
-    });
-
+    // Existing initialization code...
     this.createEventForm = this.formBuilder.group({
       title: ['', Validators.required],
       shortDescription: ['', Validators.required],
@@ -50,57 +43,25 @@ export class CreateEventComponent implements OnInit {
       endDateTime: ['', Validators.required],
       category: ['', Validators.required],
       contactInfo: ['', Validators.required],
-      imageUrl: ['', Validators.required],
-    });
-
-    this.store.select('eventState').subscribe(event => {
-      if (event && event.step1) {
-        this.patchForm(event.step1);
-      }
-    });
-
-
-    this.store.select('eventState').subscribe(eventState => {
-      this.event = { ...eventState.step1, ...eventState.step2, ...eventState.step3 };
     });
   }
 
-  patchForm(formData: any): void {
-    this.createEventForm.patchValue({
-      title: formData.title || '',
-      shortDescription: formData.shortDescription || '',
-      location: formData.location || '',
-      startDateTime: formData.startDateTime || '',
-      endDateTime: formData.endDateTime || '',
-      category: formData.category || '',
-      contactInfo: formData.contactInfo || '',
-      imageUrl: formData.imageUrl || '',
-    });
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
   }
 
-  get formControls() { return this.createEventForm.controls; }
-
-
-  initializeCurrentStep() {
-    const currentUrlParts = this.router.url.split('/');
-    this.currentStep = currentUrlParts[currentUrlParts.length - 1];
-
+  onDocumentChange(event: any) {
+    const files = event.target.files;
+    this.uploadedFiles = Array.from(files); // Convert FileList to an array
   }
-
-  isStepActive(step: Step): boolean {
-    let currentIndex = this.steps.find(step => step.route === this.currentStep)?.index || 0;
-
-    return step?.index <= currentIndex;
-  }
-
   updateCharacterCount(): void {
     const shortDescription = this.createEventForm.get('shortDescription')?.value || '';
     this.characterCount = shortDescription.length;
   }
 
-  togglePricingWrapper() {
-    this.isCollapsed = !this.isCollapsed;
-  }
 
   saveEvent() {
     if (this.createEventForm.valid) {
@@ -112,21 +73,21 @@ export class CreateEventComponent implements OnInit {
         endDateTime: this.createEventForm.value.endDateTime,
         category: this.createEventForm.value.category,
         contactInfo: this.createEventForm.value.contactInfo,
-        imageUrl: this.createEventForm.value.imageUrl,
         status: "active"
       };
 
-
-      // Call the createEvent method from the service
+      // Create the event and get the event ID
       this.eventService.createEvent(eventData).subscribe({
         next: (response) => {
-          this.toastr.success(" Evento creato con successo"),
-
-            console.log('Event created successfully:', response);
-            this.router.navigate(['/events']);
+          this.toastr.success("Evento creato con successo");
+          console.log("response", response)
+          const eventId = response.event.id; // Assuming your response returns the created event ID
+          // Now upload event documents
+          if (eventId)
+            this.saveEventDocuments(eventId);
         },
-        error: (error) => {
-          this.toastr.error(" Errore creazione evento")
+        error: () => {
+          this.toastr.error("Errore creazione evento");
         },
       });
     } else {
@@ -134,4 +95,24 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
+  saveEventDocuments(eventId: string) {
+    const formData = new FormData();
+
+    for (let file of this.uploadedFiles) {
+      formData.append('files', file);
+    }
+
+    formData.append('eventId', eventId);
+
+    this.uploadService.uploadEventDocuments(formData).subscribe(
+      (response) => {
+        console.log(response);
+        this.uploadedFiles = []; // Clear the uploaded files array
+        this.router.navigate(['/events']);
+      },
+      (error) => {
+        this.toastr.error("Errore nel caricamento dei documenti");
+      }
+    );
+  }
 }

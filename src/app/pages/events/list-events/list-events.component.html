@@ -1,6 +1,7 @@
 <div class="container lista-events">
     <div class="actions-wrapper">
-        <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" class='action' type="button" (click)="goToPageCreateEvent()">
+        <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" class='action' type="button"
+            (click)="goToPageCreateEvent()">
             <i class="fa-solid fa-plus"></i>{{ 'MENU_CREATE_EVENTS' | translate }}
         </button>
     </div>
@@ -18,11 +19,12 @@
     <div class="events-container" *ngIf="events.length > 0">
         <div class="event-card" *ngFor="let event of events">
             <h5>{{ event.title }} </h5>
-            <span>{{ event.startDateTime | date:'dd/MM/yyyy' }}</span>
+            <span>{{ event.startDateTime | date:'dd/MM/yyyy HH:mm' }}</span>
             <img [src]="event.imageUrl" alt="{{ event.title }}">
             <p>{{ event.shortDescription }}</p>
-            <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" (click)="onClickDeleteEvent(event)">{{ 'EVENTS_DELETE' | translate }}</button>
+            <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" (click)="onClickDeleteEvent(event)">{{
+                'EVENTS_DELETE' | translate }}</button>
         </div>
     </div>
-   
+
 </div>

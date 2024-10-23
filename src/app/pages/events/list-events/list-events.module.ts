@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Importa FormsModule qui
+import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ListEventsComponent } from './list-events.component';
 import { ListEventsRoutingModule } from './list-events-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-    declarations: [
-        ListEventsComponent
-    ],
+    declarations: [ListEventsComponent],
     imports: [
         CommonModule,
         FormsModule,
-        TranslateModule,
+        TranslateModule, // Ensure TranslateModule is imported properly
         SharedModule,
         ListEventsRoutingModule,
     ],
-    exports: [
-        ListEventsComponent
-    ]
 })
 export class ListEventsModule { }

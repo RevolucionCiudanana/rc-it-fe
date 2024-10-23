@@ -6,6 +6,9 @@ import { MessageService } from '@services/message.service';
 import { EventService } from '@services/event.service';
 import { User } from '@models/user';
 import { HasRolePipe } from '../../../pipes/has-role.pipe';
+import { SpacesService } from '@services/spaces.service';
+
+
 
 @Component({
     selector: 'app-list-events',
@@ -19,12 +22,16 @@ export class ListEventsComponent implements OnInit {
     eventTypes: string[] = ['Politico', 'Culturale', 'Sportivo']; // Aggiungi altri tipi se necessario
     user!: User;
 
+
+
     constructor(
         private store: Store<{ authState: any }>,
         private router: Router,
         private messageService: MessageService,
-        private eventService: EventService
-    ) { }
+        private spacesService: SpacesService,
+        private eventService: EventService,
+    ) { 
+    }
 
     ngOnInit(): void {
         this.store.select('authState').subscribe(authState => {
@@ -41,12 +48,29 @@ export class ListEventsComponent implements OnInit {
         this.getEvents(); // Carica tutti gli eventi inizialmente
     }
 
-    
+    getFileUrl(key: string): string {
+        return this.spacesService.s3.getSignedUrl('getObject', {
+            Bucket: this.spacesService.bucketName,
+            Key: key,
+            Expires: 3600, // Tempo di scadenza del link in secondi
+        });
+    }
+
 
     getEvents() {
         this.eventService.getEvents(this.selectedType).subscribe(
             (events: Event[]) => {
-                this.events = events; // Aggiorna l'array di eventi
+                // Process each event to extract and generate signed URLs
+                this.events = events.map(event => {
+                    // If there are event documents, use the first one to generate a signed URL
+                    if (event.eventDocuments && event.eventDocuments.length > 0) {
+                        const document = event.eventDocuments[0];
+                        if (document.keyFile) {
+                            event.imageUrl = this.getFileUrl(document.keyFile);
+                        }
+                    }
+                    return event;
+                });
             },
             (error) => {
                 console.error('Error fetching events:', error);

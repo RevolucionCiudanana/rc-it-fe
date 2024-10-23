@@ -13,4 +13,5 @@ export interface Event {
     contactInfo?: string;        // Contact information (optional)
     imageUrl?: string;           // URL of the event image (optional)
     status: string;              // Status of the event
+    eventDocuments?: any
 }
