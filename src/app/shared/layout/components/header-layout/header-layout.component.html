@@ -32,7 +32,7 @@
       <!-- <app-cart-icon></app-cart-icon> -->
     </div>
 
-    <div class="profile-wrapper" *ngIf="isAuthenticated">
+    <div class="profile-wrapper" *ngIf="user | isAuthenticated: isAuthenticated">
       <a routerLink="/profile">
         <i class="fas fa-user"></i> <span>{{ user.name | titlecase }}</span>
       </a>

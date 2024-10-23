@@ -23,6 +23,6 @@ import { IsAuthenticatedPipe } from '../pipes/is-authenticated.pipe';
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [...ComponentsList.genericComponentsList, ...ModalsList.genericModalsList, LayoutComponent],
+  exports: [HasRolePipe, IsAuthenticatedPipe,...ComponentsList.genericComponentsList, ...ModalsList.genericModalsList, LayoutComponent],
 })
 export class SharedModule { }

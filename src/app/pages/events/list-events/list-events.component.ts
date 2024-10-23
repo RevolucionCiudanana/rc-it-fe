@@ -4,6 +4,8 @@ import { Event } from '@models/event';
 import { Store } from '@ngrx/store';
 import { MessageService } from '@services/message.service';
 import { EventService } from '@services/event.service';
+import { User } from '@models/user';
+import { HasRolePipe } from '../../../pipes/has-role.pipe';
 
 @Component({
     selector: 'app-list-events',
@@ -15,6 +17,7 @@ export class ListEventsComponent implements OnInit {
     paramEmail: string = '';
     selectedType: string = '';
     eventTypes: string[] = ['Politico', 'Culturale', 'Sportivo']; // Aggiungi altri tipi se necessario
+    user!: User;
 
     constructor(
         private store: Store<{ authState: any }>,
@@ -27,12 +30,18 @@ export class ListEventsComponent implements OnInit {
         this.store.select('authState').subscribe(authState => {
             this.paramEmail = authState?.user?.email;
         });
+        const authStateSubscription = this.store.select('authState').subscribe(authState => {
+            this.user = authState.user;
+        });
+
         this.loadServices();
     }
 
     loadServices() {
         this.getEvents(); // Carica tutti gli eventi inizialmente
     }
+
+    
 
     getEvents() {
         this.eventService.getEvents(this.selectedType).subscribe(

@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CreateEventRoutingModule } from './create-event-routing.module';
-import { StepOneComponent } from './steps/step-one/step-one.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from "../../../shared/shared.module";
+import { BrowserModule } from '@angular/platform-browser';
+import { CreateEventComponent } from './create-event.component';
 
 
 @NgModule({
   declarations: [
-    StepOneComponent,
+    CreateEventComponent
   ],
   imports: [
     CommonModule,

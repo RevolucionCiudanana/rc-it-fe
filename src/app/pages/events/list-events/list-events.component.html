@@ -1,6 +1,6 @@
 <div class="container lista-events">
     <div class="actions-wrapper">
-        <button class='action' type="button" (click)="goToPageCreateEvent()">
+        <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" class='action' type="button" (click)="goToPageCreateEvent()">
             <i class="fa-solid fa-plus"></i>Crea evento
         </button>
     </div>
@@ -21,8 +21,7 @@
             <span>{{ event.startDateTime | date:'dd/MM/yyyy' }}</span>
             <img [src]="event.imageUrl" alt="{{ event.title }}">
             <p>{{ event.shortDescription }}</p>
-            <button (click)="goToEvent(event)">Dettagli</button>
-            <button (click)="onClickDeleteEvent(event)">Elimina</button>
+            <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" (click)="onClickDeleteEvent(event)">Elimina</button>
         </div>
     </div>
    

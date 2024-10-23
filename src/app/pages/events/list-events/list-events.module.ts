@@ -13,7 +13,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     imports: [
         CommonModule,
         FormsModule,
-        ListEventsRoutingModule
+        SharedModule,
+        ListEventsRoutingModule,
     ],
     exports: [
         ListEventsComponent

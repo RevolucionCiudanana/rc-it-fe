@@ -32,6 +32,7 @@ import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 registerLocaleData(localeIt);
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     CommonModule,
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
