@@ -10,11 +10,11 @@
         <h3>{{ contact.name }}</h3>
         <p>
           <i class="fas fa-user"></i>
-          {{ 'FORM_FIELD_ROLE' | translate }}: <a href="mailto:{{ contact.email }}"> {{ contact.role }}</a>
+          <a href="mailto:{{ contact.email }}"> {{ contact.role }}</a>
         </p>
         <p>
           <i class="fas fa-envelope"></i>
-          {{ 'FORM_FIELD_EMAIL' | translate }}: <a href="mailto:{{ contact.email }}"> {{ contact.email }}</a>
+          <a href="mailto:{{ contact.email }}"> {{ contact.email }}</a>
         </p>
         <!-- <p>
           <i class="fas fa-phone"></i>
@@ -24,18 +24,21 @@
     </div>
     <div class="col-6">
       <!-- <h3>{{ 'CONTACTS_FORM' | translate }}</h3> -->
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-        <label for="name">{{ 'FORM_FIELD_NAME' | translate }}:</label>
-        <input id="name" formControlName="name" required>
+      <div class="card">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <label for="name">{{ 'FORM_FIELD_NAME' | translate }}:</label>
+          <input id="name" formControlName="name" required>
 
-        <label for="email">{{ 'FORM_FIELD_EMAIL' | translate }}:</label>
-        <input id="email" formControlName="email" required>
+          <label for="email">{{ 'FORM_FIELD_EMAIL' | translate }}:</label>
+          <input id="email" formControlName="email" required>
 
-        <label for="message">{{ 'FORM_FIELD_MESSAGE' | translate }}:</label>
-        <textarea id="message" formControlName="message" required></textarea>
+          <label for="message">{{ 'FORM_FIELD_MESSAGE' | translate }}:</label>
+          <textarea id="message" formControlName="message" required></textarea>
 
-        <button type="submit" [disabled]="contactForm.invalid">{{ 'FORM_FIELD_SEND_MESSAGE' | translate }}</button>
-      </form>
+          <button type="submit" [disabled]="contactForm.invalid">{{ 'FORM_FIELD_SEND_MESSAGE' | translate }}</button>
+        </form>
+      </div>
+
     </div>
   </div>
 

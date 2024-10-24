@@ -8,7 +8,8 @@
             <div class="menu-item" (click)="toggleSubMenu('becomeMember')">
                 <span class="label">
                     <i class="fas fa-user"></i> {{ 'MENU_MEMBER' | translate }}
-                    <i class="arrow fas" [ngClass]="isSubMenuOpen['becomeMember'] ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                    <i class="arrow fas"
+                        [ngClass]="isSubMenuOpen['becomeMember'] ? 'fa-angle-up' : 'fa-angle-down'"></i>
                 </span>
                 <div class="sub-menu" *ngIf="isSubMenuOpen['becomeMember']">
                     <a routerLink="/become-member">
@@ -43,6 +44,14 @@
             <a routerLink="/contacts">
                 <i class="fas fa-address-book"></i> {{ 'MENU_CONTACTS' | translate }}
             </a>
+            <hr>
+            <a routerLink="/terms-and-conditions" class="nav-link">
+                <i class="fas fa-file-contract"></i> {{ 'MENU_TERMS_CONDITIONS' | translate }}
+            </a>
+            <a routerLink="/privacy-policy" class="nav-link">
+                <i class="fas fa-user-shield"></i> {{ 'MENU_PRIVACY_POLICY' | translate }}
+            </a>
+
             <hr>
             <a *ngIf="!isAuthenticated" routerLink="/login">
                 <i class="fas fa-sign-in-alt"></i> Login

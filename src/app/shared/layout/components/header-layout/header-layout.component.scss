@@ -50,8 +50,8 @@ header {
           font-size: 0.7rem;
           text-decoration: none;
           text-transform: uppercase;
-          padding: 0.5rem;
-          border-radius: 5px;
+          padding: 0.7rem;
+          // border-radius: 5px;
 
           &:hover {
             background-color: $primary-color;
@@ -68,21 +68,21 @@ header {
           display: none; // Hide sub-menu by default
           flex-direction: column;
           position: absolute; // Position it below the item-menu
-          top: 100%; // Position it below the item
+          top: 120%; // Position it below the item
           left: 0;
           background-color: #fff; // Set background color for the sub-menu
-          border: 1px solid #ccc; // Add a border
-          border-radius: 4px; // Rounded corners
           z-index: 10; // Make sure it appears above other content
           white-space: nowrap; // Prevent line breaks
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
           .sub-item {
             display: inline-block; // Use inline-block to align items horizontally
-            padding: 5px 10px; // Padding for sub-item
-            margin-right: 10px; // Add margin for spacing between sub-items
+            width: 100%;
+            // margin-right: 10px; // Add margin for spacing between sub-items
             cursor: pointer;
 
             a {
+              display: block;
               color: #333;
               text-decoration: none;
 

@@ -73,7 +73,11 @@
     }
   }
 
-
+  .main-title {
+    .description {
+      color: white;
+    }
+  }
   .social-media-container {
     display: flex;
     justify-content: space-evenly;

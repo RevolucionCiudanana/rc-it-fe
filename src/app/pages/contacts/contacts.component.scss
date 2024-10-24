@@ -1,4 +1,4 @@
-@import '../../../assets/scss/colors.scss';
+@import "../../../assets/scss/colors.scss";
 
 .contacts-container {
   padding: 20px;
@@ -60,15 +60,17 @@
       }
     }
   }
-
+  .card {
+    padding: 1rem;
+  }
   .contact-form {
-
     label {
       display: block;
       margin-bottom: 5px;
     }
 
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
