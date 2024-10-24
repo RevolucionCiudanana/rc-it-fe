@@ -73,6 +73,13 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import(
+            './pages/privacy-policy/privacy-policy.module'
+          ).then((m) => m.PrivacyPolicyModule),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import(
             './pages/authentication/authentication.module'
           ).then((m) => m.AuthenticationModule),
       },
