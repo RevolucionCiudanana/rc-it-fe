@@ -50,6 +50,7 @@
   "FORM_FIELD_NOT_FOUND_RESULT": "Indirizzo non trovato",
   "FORM_FIELD_SUCCESS_TITLE": "Registrazione riuscita",
   "FORM_FIELD_SUCCESS_MESSAGE": "La tua registrazione è stata completata!",
+  "FORM_FIELD_ROLE": "Ruolo",
   "BUTTONS_GO_HOME": "Vai alla pagina principale",
   "BUTTONS_NEXT": "Avanti",
   "BUTTONS_SEND": "Invia",

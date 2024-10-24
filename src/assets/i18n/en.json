@@ -46,6 +46,7 @@
   "FORM_FIELD_SEND_MESSAGE": "Send Message",
   "FORM_FIELD_SUCCESS_TITLE": "Registration success",
   "FORM_FIELD_SUCCESS_MESSAGE": "Your registration is completed!",
+  "FORM_FIELD_ROLE": "Role",
   "BUTTONS_GO_HOME": "Go home",
   "BUTTONS_NEXT": "Siguiente",
   "BUTTONS_SEND": "Send",

@@ -9,13 +9,17 @@
       <div *ngFor="let contact of contacts" class="contact-card">
         <h3>{{ contact.name }}</h3>
         <p>
-          <i class="fas fa-envelope"></i>
-          {{ 'FORM_FIELD_EMAIL' | translate }}: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+          <i class="fas fa-user"></i>
+          {{ 'FORM_FIELD_ROLE' | translate }}: <a href="mailto:{{ contact.email }}"> {{ contact.role }}</a>
         </p>
         <p>
-          <i class="fas fa-phone"></i>
-          {{ 'FORM_FIELD_CELLPHONE' | translate }}: <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+          <i class="fas fa-envelope"></i>
+          {{ 'FORM_FIELD_EMAIL' | translate }}: <a href="mailto:{{ contact.email }}"> {{ contact.email }}</a>
         </p>
+        <!-- <p>
+          <i class="fas fa-phone"></i>
+          {{ 'FORM_FIELD_CELLPHONE' | translate }}: <a href="tel:{{ contact.phone }}"> {{ contact.phone }}</a>
+        </p> -->
       </div>
     </div>
     <div class="col-6">

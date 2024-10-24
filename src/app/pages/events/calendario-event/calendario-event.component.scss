@@ -6,9 +6,14 @@
   border-radius: 10px; // Aggiungi angoli arrotondati se desiderato
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Leggero ombreggiatura
   align-items: center;
+  gap: 1rem;
   .mese {
     cursor: pointer;
     width: fit-content;
+    border: 1px solid #e2dfdf;
+    width: 100%;
+    padding: 1rem;
+    
   }
   h2 {
     display: flex;

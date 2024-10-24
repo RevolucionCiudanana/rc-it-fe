@@ -10,15 +10,11 @@ export class ContactsComponent implements OnInit {
   // Dati di contatto
   contacts = [
     {
-      name: 'Mario Rossi',
-      email: 'mario.rossi@example.com',
+      name: 'Nestor Carranza',
+      role: 'Director',
+      email: 'nestorcarranza@revolucionciudadana.it',
       phone: '+39 123 456 7890',
     },
-    {
-      name: 'Luisa Verdi',
-      email: 'luisa.verdi@example.com',
-      phone: '+39 987 654 3210',
-    }
   ];
 
   // Modulo di contatto

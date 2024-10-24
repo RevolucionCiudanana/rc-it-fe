@@ -5,7 +5,7 @@
   border-radius: 8px;
 
   h2 {
-    color: $primary-color;
+    // color: $primary-color;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -28,14 +28,14 @@
 
   .contact-card {
     background-color: white;
-    border: 1px solid $primary-color;
+    // border: 1px solid $primary-color;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     h3 {
-      color: $primary-color;
+      color: #3d3d3d;
       margin-bottom: 10px;
     }
 
