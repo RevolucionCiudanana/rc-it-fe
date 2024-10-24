@@ -3,6 +3,8 @@ import { MemberService } from '../../../services/member.service';
 import { SectorService } from '@services/sector.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ProfessionService } from '@services/profession.service';
+import { User } from '@models/user';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-list-member',
@@ -12,6 +14,7 @@ import { ProfessionService } from '@services/profession.service';
 export class ListMemberComponent implements OnInit {
   members: any[] = [];
   filteredMembers: any[] = [];
+  user!: User;
 
   // Filter properties
   filterName: string = '';
@@ -34,6 +37,7 @@ export class ListMemberComponent implements OnInit {
   professionMap: { [key: string]: string } = {};
 
   constructor(
+    private store: Store<{ authState: any }>,
     private memberService: MemberService,
     private translate: TranslateService,
     private sectorService: SectorService,
@@ -41,6 +45,10 @@ export class ListMemberComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const authStateSubscription = this.store.select('authState').subscribe(authState => {
+      this.user = authState.user;
+    });
+
     this.getMembers();
     this.loadSectors();
     this.loadAllProfessions();
@@ -88,6 +96,20 @@ export class ListMemberComponent implements OnInit {
         console.error('Error fetching professions:', error);
       }
     );
+  }
+
+  deleteMember(memberId: number) {
+    if (confirm(this.translate.instant('CONFIRM_DELETE_MEMBER'))) {
+      this.memberService.deleteMemberById(memberId).subscribe(
+        () => {
+          // Refresh the list after deletion
+          this.getMembers();
+        },
+        (error: any) => {
+          console.error('Error deleting member:', error);
+        }
+      );
+    }
   }
 
   getMembers() {

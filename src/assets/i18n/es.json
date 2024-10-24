@@ -36,6 +36,7 @@
   "TABLE_MEMBER_COUNTRY": "País",
   "TABLE_MEMBER_COUNTY": "Condado",
   "TABLE_MEMBER_POSTCODE": "Código postal",
+  "TABLE_MEMBER_ACTIONS": "Acciones",
   "FORM_FIELD_NAME": "Nombre",
   "FORM_FIELD_SURNAME": "Apellido",
   "FORM_FIELD_EMAIL": "Correo electrónico",

@@ -22,8 +22,8 @@
     th {
       background-color: #1999d5; /* Blue header background */
       color: hsl(0, 0%, 100%); /* White text for the headers */
-    //   font-weight: bold;
-    //   text-transform: uppercase;
+      //   font-weight: bold;
+      //   text-transform: uppercase;
       letter-spacing: 0.03em;
       font-size: 14px;
     }
@@ -46,6 +46,7 @@
       outline: none;
       font-size: 14px;
       border-radius: 4px;
+      border: 2px solid #f7f7f7; /* Slightly darker blue on focus */
     }
 
     /* Input focus styles */

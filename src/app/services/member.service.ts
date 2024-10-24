@@ -32,7 +32,7 @@ export class MemberService {
     }
 
     // Delete a member by ID (requires token in headers)
-    deleteMemberById(memberId: number, token: string): Observable<any> {
+    deleteMemberById(memberId: number): Observable<any> {
         return this.http.delete(API_URL + `deleteMemberById/${memberId}`, httpOptions);
     }
 }

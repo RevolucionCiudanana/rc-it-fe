@@ -36,6 +36,7 @@
   "TABLE_MEMBER_COUNTRY": "Country",
   "TABLE_MEMBER_COUNTY": "County",
   "TABLE_MEMBER_POSTCODE": "Postcode",
+  "TABLE_MEMBER_ACTIONS": "Actions",
   "FORM_FIELD_NAME": "Name",
   "FORM_FIELD_SURNAME": "Surname",
   "FORM_FIELD_EMAIL": "Email",
