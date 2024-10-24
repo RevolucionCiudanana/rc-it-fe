@@ -189,9 +189,7 @@ export class BecomeMemberComponent implements OnInit {
     this.professionService.getProfessions(sector).subscribe(
       (data) => {
         data.forEach(profession => {
-          console.log(profession)
           this.translate.get(profession.code).subscribe(translatedName => {
-            console.log(translatedName)
             this.professions.push({
               ...profession,
               name: translatedName
@@ -199,7 +197,6 @@ export class BecomeMemberComponent implements OnInit {
           });
 
         });
-        console.log(this.professions)
       },
       (error) => {
         console.error('Error fetching professions:', error); // Handle errors appropriately
@@ -226,7 +223,6 @@ export class BecomeMemberComponent implements OnInit {
       // Call the MemberService to submit the form data
       this.memberService.createMember(this.memberForm.value).subscribe({
         next: (response) => {
-          console.log('Member created successfully', response);
           this.registrationSuccess = true;
           this.currentStep = 4; // Go to the confirmation step
         },

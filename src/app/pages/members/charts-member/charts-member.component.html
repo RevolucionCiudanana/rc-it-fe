@@ -1,0 +1,55 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div *ngIf="countryChart" class="card mb-3">
+                <!-- <div class="card-header">Country Chart</div> -->
+                <div class="card-body">
+                    <div [chart]="countryChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div *ngIf="townCountyChart" class="card mb-3">
+                <!-- <div class="card-header">County Chart</div> -->
+                <div class="card-body">
+                    <div [chart]="townCountyChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div *ngIf="memberGrowthChart" class="card mb-3">
+                <!-- <div class="card-header">Member Growth Chart</div> -->
+                <div class="card-body">
+                    <div [chart]="memberGrowthChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div *ngIf="professionChart" class="card mb-3">
+                <!-- <div class="card-header">Profession Chart</div> -->
+                <div class="card-body">
+                    <div [chart]="professionChart"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div *ngIf="sectorChart" class="card mb-3">
+                <div class="card-body">
+                    <div [chart]="sectorChart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div *ngIf="ageDistributionChart" class="card mb-3">
+                <div class="card-body">
+                    <div [chart]="ageDistributionChart"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -80,7 +80,6 @@ export class CreateEventComponent implements OnInit {
       this.eventService.createEvent(eventData).subscribe({
         next: (response) => {
           this.toastr.success("Evento creato con successo");
-          console.log("response", response)
           const eventId = response.event.id; // Assuming your response returns the created event ID
           // Now upload event documents
           if (eventId)

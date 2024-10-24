@@ -12,6 +12,7 @@ import * as ModalsList from '../modals/index';
 import { TranslateModule } from '@ngx-translate/core';
 import { HasRolePipe } from '../pipes/has-role.pipe';
 import { IsAuthenticatedPipe } from '../pipes/is-authenticated.pipe';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [HasRolePipe,IsAuthenticatedPipe,...ComponentsList.genericComponentsList, ...ModalsList.genericModalsList,
@@ -19,6 +20,7 @@ import { IsAuthenticatedPipe } from '../pipes/is-authenticated.pipe';
   imports: [
     CommonModule,
     RouterModule.forChild([]),
+    ChartModule,
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,

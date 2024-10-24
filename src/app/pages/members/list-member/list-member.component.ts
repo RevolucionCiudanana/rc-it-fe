@@ -27,6 +27,7 @@ export class ListMemberComponent implements OnInit {
   filterProfessionId: string = '';
   filterCountry: string = '';
   filterCounty: string = '';
+  filterTown: string = '';
   filterPostcode: string = '';
 
   sectors: any[] = [];
@@ -137,6 +138,8 @@ export class ListMemberComponent implements OnInit {
         member.professionId.includes(this.filterProfessionId) &&
         member.country.toLowerCase().includes(this.filterCountry.toLowerCase()) &&
         member.county.toLowerCase().includes(this.filterCounty.toLowerCase()) &&
+        member.town.toLowerCase().includes(this.filterTown.toLowerCase()) &&
+
         member.postcode.includes(this.filterPostcode)
       );
     });

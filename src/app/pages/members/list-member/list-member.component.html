@@ -44,6 +44,10 @@
                         (input)="filterMembers()" />
                 </th>
                 <th>
+                    <input type="text" [placeholder]="'TABLE_MEMBER_TOWN' | translate" [(ngModel)]="filterTown"
+                        (input)="filterMembers()" />
+                </th>
+                <th>
                     <input type="text" [placeholder]="'TABLE_MEMBER_POSTCODE' | translate" [(ngModel)]="filterPostcode"
                         (input)="filterMembers()" />
                 </th>
@@ -62,6 +66,7 @@
                 <th>{{'TABLE_MEMBER_PROFESSION' | translate}}</th>
                 <th>{{'TABLE_MEMBER_COUNTRY' | translate}}</th>
                 <th>{{'TABLE_MEMBER_COUNTY' | translate}}</th>
+                <th>{{'TABLE_MEMBER_TOWN' | translate}}</th>
                 <th>{{'TABLE_MEMBER_POSTCODE' | translate}}</th>
                 <th>{{'TABLE_MEMBER_ACTIONS' | translate}}</th>
             </tr>
@@ -78,6 +83,7 @@
                 <td>{{ getProfessionName(member.professionId) }}</td>
                 <td>{{ member.country }}</td>
                 <td>{{ member.county }}</td>
+                <td>{{ member.town }}</td>
                 <td>{{ member.postcode }}</td>
                 <td>
                     <button *ngIf="user | hasRole:['ROLE_ADMIN']" (click)="deleteMember(member.id)"

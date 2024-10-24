@@ -18,6 +18,9 @@
                     <a routerLink="/list-member" *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']">
                         <i class="fas fa-users"></i> {{ 'MENU_LIST_MEMBER' | translate }}
                     </a>
+                    <a routerLink="/charts-member" *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']">
+                        <i class="fas fa-chart-pie"></i> {{ 'MENU_CHARTS_MEMBER' | translate }}
+                    </a>
                 </div>
             </div>
             <div class="menu-item" (click)="toggleSubMenu('events')">

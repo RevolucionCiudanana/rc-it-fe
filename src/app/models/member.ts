@@ -17,4 +17,5 @@ export interface Member {
     road?: string;               // Optional: Road
     state?: string;              // Optional: State
     town?: string;               // Optional: Town
+    createdAt?: Date;
 }

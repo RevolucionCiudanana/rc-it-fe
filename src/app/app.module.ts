@@ -33,6 +33,7 @@ import localeIt from '@angular/common/locales/it';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChartModule } from 'angular-highcharts';
 
 
 registerLocaleData(localeIt);
@@ -55,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactsModule,
     EventsModule,
     ProfileModule,
+    ChartModule,
     AuthenticationModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({

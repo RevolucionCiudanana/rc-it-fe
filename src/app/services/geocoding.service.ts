@@ -9,7 +9,7 @@ export class GeocodingService {
 
     findLocation(searchInput: string | number) {
         if (searchInput) {
-            let url = 'https://nominatim.openstreetmap.org/search?accept-language=it-IT&limit=100&format=json&addressdetails=true';
+            let url = 'https://nominatim.openstreetmap.org/search?accept-language=es-ESlimit=100&format=json&addressdetails=true';
 
             if (isNaN(+searchInput)) {
                 // Replace spaces with '+'
