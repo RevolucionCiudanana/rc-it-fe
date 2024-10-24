@@ -35,6 +35,23 @@ export class ChartsMemberComponent implements OnInit {
   chartLabelSectorId: string = "";
   chartLabelComulativeMembers: string = "";
   chartLabelAgeGroup: string = "";
+  colors: string[] = [
+    '#FFC300', // Giallo oro
+    '#1999D5', // Blu
+    '#FF5733', // Rosso arancio
+    '#DAF7A6', // Verde chiaro
+    '#C70039', // Rosso ciliegia
+    '#581845', // Viola scuro
+    '#FF6F61', // Corallo
+    '#F1C40F', // Giallo brillante
+    '#2ECC71', // Verde menta
+    '#3498DB', // Blu chiaro
+    '#8E44AD', // Viola
+    '#E67E22', // Arancio
+    '#F39C12', // Giallo senape
+    '#2980B9', // Blu medio
+    '#27AE60', // Verde scuro
+  ];
 
   constructor(private translate: TranslateService, private sectorService: SectorService, private professionService: ProfessionService, private memberService: MemberService) { }
 
@@ -113,11 +130,11 @@ export class ChartsMemberComponent implements OnInit {
       return acc;
     }, {});
 
-    const chartData = Object.keys(countryData).map(country => ({
+    const chartData = Object.keys(countryData).map((country, index) => ({
       name: country,
-      y: countryData[country]
+      y: countryData[country],
+      color: this.colors[index % this.colors.length]
     }));
-
 
 
     this.countryChart = new Chart({
@@ -252,9 +269,11 @@ export class ChartsMemberComponent implements OnInit {
     }, {});
 
     // Prepare chart data with profession names
-    const chartData = Object.keys(professionData).map(professionId => ({
+    const chartData = Object.keys(professionData).map((professionId, index) => ({
       name: this.getProfessionName(professionId), // Get the profession name from professionId
-      y: professionData[professionId]
+      y: professionData[professionId],
+      color: this.colors[index % this.colors.length]
+
     }));
 
     // Prepare X-axis categories with profession names
@@ -304,9 +323,11 @@ export class ChartsMemberComponent implements OnInit {
     );
 
     // Prepare chart data with sector names
-    const chartData = Object.keys(sectorData).map((sectorId) => ({
+    const chartData = Object.keys(sectorData).map((sectorId, index) => ({
       name: this.getSectorName(sectorId), // Get the sector name from sectorId
       y: sectorData[sectorId],
+      color: this.colors[index % this.colors.length]
+
     }));
 
     // Prepare X-axis categories with sector names
@@ -348,9 +369,11 @@ export class ChartsMemberComponent implements OnInit {
   }
 
   createMemberGrowthChart() {
-    const growthData = this.members.map(member => ({
+    const growthData = this.members.map((member, index) => ({
       x: member.createdAt ? moment(member.createdAt).valueOf() : Date.now(), // Use moment to get timestamp
-      y: 1
+      y: 1,
+      color: this.colors[index % this.colors.length]
+
     }));
 
     this.translate.get(['CHART_TYPECHART_TITLE_GROWTH', 'CHART_TYPECHART_MEMBERS', 'CHART_TYPECHART_XAXIS_DATE']).subscribe((translations) => {
@@ -411,13 +434,15 @@ export class ChartsMemberComponent implements OnInit {
     }, {});
 
     // Prepare chart data
-    const chartData = Object.keys(locationData).map(location => ({
+    const chartData = Object.keys(locationData).map((location, index) => ({
       name: location,
-      y: locationData[location]
+      y: locationData[location],
+      color: this.colors[index % this.colors.length]
+
     }));
 
     // Translate title and create the chart
-    this.translate.get(['CHART_TYPECHART_TITLE_COUNTY','CHART_AXIS_TITLE_LOCATION']).subscribe((translatedTitle) => {
+    this.translate.get(['CHART_TYPECHART_TITLE_COUNTY', 'CHART_AXIS_TITLE_LOCATION']).subscribe((translatedTitle) => {
       this.townCountyChart = new Chart({
         chart: {
           type: 'bar'
@@ -461,9 +486,11 @@ export class ChartsMemberComponent implements OnInit {
     }, {});
 
     // Prepare chart data with age groups
-    const chartData = Object.keys(ageData).map(ageGroup => ({
+    const chartData = Object.keys(ageData).map((ageGroup, index) => ({
       name: ageGroup,
-      y: ageData[ageGroup]
+      y: ageData[ageGroup],
+      color: this.colors[index % this.colors.length]
+
     }));
     this.translate.get('CHART_TYPECHART_TITLE_AGEDISTRIBUTION').subscribe((translatedTitle) => {
       this.ageDistributionChart = new Chart({
