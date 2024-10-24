@@ -1,4 +1,11 @@
+<div class="container section-page-title">
+    <div class="page-title">
+        <span>{{ 'MENU_LIST_EVENTS' | translate }}</span>
+    </div>
+</div>
+
 <div class="container lista-events">
+
     <div class="actions-wrapper">
         <button *ngIf="user | hasRole:['ROLE_ADMIN', 'ROLE_MONITORING']" class='action' type="button"
             (click)="goToPageCreateEvent()">
@@ -6,7 +13,7 @@
         </button>
     </div>
     <div class="filters">
-        <h5>{{ 'EVENTS_FILTERS' | translate }}</h5>
+        <!-- <h5>{{ 'EVENTS_FILTERS' | translate }}</h5> -->
         <label for="type">{{ 'EVENTS_FILTER_CATEGORY' | translate }}:</label>
         <select id="type" [(ngModel)]="selectedType" (change)="applyFilters()">
             <option value="">Tutte</option>

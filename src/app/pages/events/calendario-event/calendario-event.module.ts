@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarioEventComponent } from './calendario-event.component';
 import { CalendarioEventRoutingModule } from './calendario-event-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { CalendarioEventRoutingModule } from './calendario-event-routing.module'
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        TranslateModule,
         CalendarioEventRoutingModule
     ]
 })

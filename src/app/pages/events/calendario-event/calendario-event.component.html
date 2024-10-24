@@ -1,4 +1,11 @@
+<div class="container section-page-title">
+
+    <div class="page-title">
+        <span>{{ 'MENU_CALENDAR_EVENTS' | translate }}</span>
+    </div>
+</div>
 <div class="calendario">
+
     <div *ngFor="let month of months" class="mese">
         <h2 (click)="toggleMonth(month)">{{ month.format('MMMM YYYY') | titlecase }}<i [ngClass]="{
               'fa-chevron-up': isMonthOpen(month),

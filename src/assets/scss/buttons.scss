@@ -24,3 +24,34 @@
   border: 1px solid $primary-color;
   background-color: #fff;
 }
+
+.section-page-title {
+  display: flex;
+  align-items: center;
+  .page-title {
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    &.big {
+      span {
+        font-size: 3rem;
+      }
+    }
+    &.medium {
+      span {
+        font-size: 2rem;
+      }
+    }
+    span {
+      font-family: "GothamUltra";
+      font-size: 1rem;
+      color: #ffff;
+      background-color: #df4747;
+      padding: 9px 22px 9px 9px;
+      border-radius: 20px;
+    }
+    .description {
+      padding: 0.2rem 1rem;
+    }
+  }
+}

@@ -1,7 +1,11 @@
+<div class="container section-page-title">
+  <div class="page-title">
+    <span>{{ 'CONTACTS_TITLE' | translate }}</span>
+  </div>
+</div>
 <div class="contacts-container">
   <div class="row">
     <div class="col-6">
-      <h2>{{ 'CONTACTS_TITLE' | translate }}</h2>
       <div *ngFor="let contact of contacts" class="contact-card">
         <h3>{{ contact.name }}</h3>
         <p>
@@ -15,7 +19,7 @@
       </div>
     </div>
     <div class="col-6">
-      <h3>{{ 'CONTACTS_FORM' | translate }}</h3>
+      <!-- <h3>{{ 'CONTACTS_FORM' | translate }}</h3> -->
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
         <label for="name">{{ 'FORM_FIELD_NAME' | translate }}:</label>
         <input id="name" formControlName="name" required>

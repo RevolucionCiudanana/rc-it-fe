@@ -6,11 +6,16 @@
             </div>
             <div class="image-container">
                 <img src="assets/images/gifs/animation-member.gif" alt="Become a Member Animation" />
-                <span class="become-member-title">{{ 'BECOME_MEMBER_TITLE' | translate }}</span>
+                <span class="become-member-title">{{ 'BECOME_MEMBER_JOINUS' | translate }}</span>
             </div>
         </div>
         <div class="col-md-6 p-0">
             <div class="card">
+                <div class="section-page-title">
+                    <div class="page-title medium">
+                        <span>{{ 'BECOME_MEMBER_TITLE' | translate }}</span>
+                    </div>
+                </div>
                 <div class="step" [ngClass]="{'active': currentStep === 1}">
                     <form [formGroup]="memberForm">
                         <div>
