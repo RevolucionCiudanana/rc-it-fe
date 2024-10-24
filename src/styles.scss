@@ -7,6 +7,14 @@
 .text-chillax {
   font-family: "Chillax";
 }
+html {
+  touch-action: manipulation; /* Prevents double-tap zoom */
+  -webkit-user-select: none; /* Disables text selection on iOS */
+  -moz-user-select: none; /* Disables text selection on Firefox */
+  -ms-user-select: none; /* Disables text selection on IE */
+  user-select: none; /* Disables text selection */
+}
+
 
 body {
   margin: 0;
