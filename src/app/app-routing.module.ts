@@ -66,6 +66,13 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import(
+            './pages/terms-and-conditions/terms-and-conditions.module'
+          ).then((m) => m.TermsAndConditionsModule),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import(
             './pages/authentication/authentication.module'
           ).then((m) => m.AuthenticationModule),
       },
